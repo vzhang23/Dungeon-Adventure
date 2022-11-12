@@ -38,6 +38,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 7752209745721596146}
     m_Modifications:
     - target: {fileID: 1027218910692328842, guid: d6e74c8b4ee21624a8c353209278982c, type: 3}
@@ -100,7 +101,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: ground1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5551965173529989473, guid: d6e74c8b4ee21624a8c353209278982c, type: 3}
+      propertyPath: m_TagString
+      value: sandGround
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: d6e74c8b4ee21624a8c353209278982c, type: 3}
 --- !u!4 &846940877950641743 stripped
 Transform:
@@ -112,6 +118,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 7752209745721596146}
     m_Modifications:
     - target: {fileID: 1027218910692328842, guid: d6e74c8b4ee21624a8c353209278982c, type: 3}
@@ -178,7 +185,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: ground1 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5551965173529989473, guid: d6e74c8b4ee21624a8c353209278982c, type: 3}
+      propertyPath: m_TagString
+      value: iceGround
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: d6e74c8b4ee21624a8c353209278982c, type: 3}
 --- !u!4 &4563997966749005511 stripped
 Transform:
