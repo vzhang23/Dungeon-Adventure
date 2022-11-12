@@ -9,7 +9,7 @@ public class RandomMapGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < sizeOfMap; i++) {
+        for (int i = 1; i < sizeOfMap; i++) {
             int e = Random.Range(0, mapList.Count);
             print(e);
             Instantiate(mapList[e], new Vector3(i*20, 0, 0), mapList[e].transform.rotation);
