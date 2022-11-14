@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 6032584721102434858}
   - component: {fileID: 3087591196308563172}
   m_Layer: 7
-  m_Name: chest
-  m_TagString: chest
+  m_Name: armor_chest
+  m_TagString: armor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -144,4 +144,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c29dd93dc575ad46aded9a6ec358c5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyRate: 0
+  destroyRate: 0.1
