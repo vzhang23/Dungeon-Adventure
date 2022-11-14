@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class PlayerWeapon : MonoBehaviour
 {
+    public float attackMultiplier;
     public float duration;
     public Vector2 attactOffset;
     public Vector2 speed;
