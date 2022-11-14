@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class PlayerAttribute : MonoBehaviour
 {
-    public int attack;
-    public int hp;
-    public int mp;
-    public int defense;
-    public float moveSpeed;
-    public float jumpForce;
+    public int level;
+    public int exp;
+    public float hp;
+    public float mp;
+    public float attack;
+    public float defense;
     public int jumpLimit;
+    public float moveSpeed;
     public List<GameObject> weapon;
     void Start()
     {
@@ -22,5 +23,23 @@ public class PlayerAttribute : MonoBehaviour
     {
         
     }
+    public void wearArmor(PlayerArmor armor)
+    {
+        hp *= armor.hp;
+        mp *= armor.mp;
+        attack *= armor.attack;
+        defense *= armor.defense;
+        jumpLimit += armor.jumpLimit;
+        moveSpeed += armor.moveSpeed;
+    }
 
+    public void removeArmor(PlayerArmor armor)
+    {
+        hp /= armor.hp;
+        mp /= armor.mp;
+        attack /= armor.attack;
+        defense /= armor.defense;
+        jumpLimit -= armor.jumpLimit;
+        moveSpeed -= armor.moveSpeed;
+    }
 }
