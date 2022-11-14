@@ -16,11 +16,14 @@ public class CharacterMovement : MonoBehaviour
     private int currentJump;
     private bool isGrounded;
     private Dictionary<string, PlayerArmor> currentArmorParts;
+    public List<GameObject> currentSkillsValue;
+    public List<KeyCode> currentSkillsKey;
     private GameObject newArmorPart;
-
+    public float inActionUntil;
     // Start is called before the first frame update
     void Start()
     {
+        inActionUntil = 0;
         currentArmorParts = new Dictionary<string, PlayerArmor>();
         newArmorPart = null;
         isJumping = false;
@@ -38,10 +41,17 @@ public class CharacterMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (Time.time < inActionUntil)
+        {
+            return;
+        }
         Move();
     }
     private void ProcessInput()
     {
+        if (Time.time< inActionUntil) {
+            return;
+        }
         moveDirection = Input.GetAxis("Horizontal");
         if (Input.GetKeyDown(KeyCode.W) && currentJump < playerAttribute.jumpLimit)
         {
@@ -76,16 +86,32 @@ public class CharacterMovement : MonoBehaviour
             attackPosition.x = attackPosition.x + 0.5f;
             releaseAttack(attackPosition, 1);
         }
+        for(int i=0; i< currentSkillsKey.Count;i++)
+        {
+            if (Input.GetKeyDown(currentSkillsKey[i]))
+            {
+                
+                currentSkillsValue[i].GetComponent<PlayerSkill>().useSkill(gameObject);
+            }
+        }
     }
+    public void applyVelocity(float x, float y)
+    {
 
+        rb.velocity = new Vector2(x, y);
+    }
+    public Vector2 getVelocity()
+    {
 
+        return rb.velocity;
+    }
     private void Move()
     {
         if (isGrounded)
         {
             currentJump = 0;
         }
-        rb.velocity = new Vector2(moveDirection * playerAttribute.moveSpeed, rb.velocity.y);
+        applyVelocity(moveDirection * playerAttribute.moveSpeed, rb.velocity.y);
 
         if(moveDirection<0 && faceingDirection != -1)
         {
