@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 867eb3e772bf1154aa82e6c7f2b80d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackMultiplier: 0.5
   duration: 2
   attactOffset: {x: 0, y: 0}
   speed: {x: 10, y: 0}

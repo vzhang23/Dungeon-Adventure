@@ -13,21 +13,12 @@ public class GameManager : MonoBehaviour
     public GameObject ending;
     public GameObject gameTextbox;
     public GameObject pauseMenu;
-    private int stageNumber=1;
+    private static int stageNumber=1;
     public static GameManager instance = null;
+    public GameObject armorUI;
     void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-
-        else if (instance != this)
-        {
-            Destroy(gameObject);
-        }
-
-        DontDestroyOnLoad(gameObject);
+        instance = this;
 
 
     }
@@ -84,4 +75,20 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void displayArmorUI(GameObject armorObject)
+    {
+        PlayerArmor armor = armorObject.GetComponent<PlayerArmor>();
+
+        armorUI.SetActive(true);
+        TextMeshProUGUI textBox = armorUI.GetComponentInChildren<TextMeshProUGUI>();
+
+        string newText = string.Format("Part: {0} \n HP multiplier: {1}\n MP multiplier: {2}\n ATTACK multiplier: {3}\n DEFENSE multiplier: {4}\n JUMP LIMIT increase: {5}\n SPEED increase: {6} \n Press J to equip", armor.partOfArmor, armor.hp, armor.mp, armor.attack, armor.defense, armor.jumpLimit, armor.moveSpeed);
+        
+        textBox.SetText(newText);
+    }
+
+    public void hideArmorUI()
+    {
+        armorUI.SetActive(false);
+    }
 }

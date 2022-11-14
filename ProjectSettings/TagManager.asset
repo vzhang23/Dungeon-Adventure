@@ -11,6 +11,8 @@ TagManager:
   - iceGround
   - fireGround
   - sandGround
+  - chest
+  - chestUI
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - Water
   - UI
   - ground
-  - 
+  - chest
   - 
   - 
   - 
