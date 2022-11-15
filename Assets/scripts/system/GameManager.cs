@@ -68,10 +68,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(menuScene);
     }
 
-    public void NextStage() {
+    public IEnumerator NextStage() {
         stageNumber++;
         GameObject currentPlayer = GameObject.FindGameObjectsWithTag("player")[0];
         currentPlayer.transform.position = new Vector2(-3, 3);
+        yield return new WaitForSeconds(1);
         SceneManager.LoadScene(gameScene+ stageNumber);
         Init();
 

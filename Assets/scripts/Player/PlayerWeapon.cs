@@ -13,7 +13,11 @@ public class PlayerWeapon : MonoBehaviour
     private Vector2 startingPosition;
     private float startTime;
     private int direction;
-    private GameObject mainPlayer ;
+    private GameObject mainPlayer; 
+    private bool dealDamage;
+    public Vector2 force;
+    public float hitRecovery;
+    public LayerMask enemyLayer;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,4 +49,15 @@ public class PlayerWeapon : MonoBehaviour
             gameObject.transform.position = currentOffset;
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        if (enemyLayer == (enemyLayer | (1 << collision.gameObject.layer)) && !dealDamage)
+        {
+            dealDamage = true;
+            PlayerAttribute player = mainPlayer.gameObject.GetComponent<PlayerAttribute>();
+            collision.gameObject.GetComponent<EnemyController>().receiveDamage(player.attack * attackMultiplier, direction, force, hitRecovery);
+        }
+    }
+
 }

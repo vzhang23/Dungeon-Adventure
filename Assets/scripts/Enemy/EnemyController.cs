@@ -9,13 +9,14 @@ public class EnemyController : MonoBehaviour
     Rigidbody2D rb;
     float timer;
     public int facingDirection = 1;
-    bool broken = true;
+    bool alive = true;
     Animator animator;
     public bool isActive;
     GameObject player;
     public bool isAttacking;
     public float inActionUntil;
     public float cooldownFinish;
+    public GameObject healthBar;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,20 +27,25 @@ public class EnemyController : MonoBehaviour
         enemyAttribute = gameObject.GetComponent<EnemyAttribute>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        
     }
 
     private void Awake()
     {
+        
         player = GameObject.FindGameObjectWithTag("player");
     }
     void Update()
     {
-        if(!broken)
+        if(!alive)
         {
             return;
         }
-        if (GetComponent<Renderer>().isVisible)
+        float distance = gameObject.transform.position.x - player.gameObject.transform.position.x;
+        if (GetComponent<Renderer>().isVisible && distance<=20)
         {
+            rb.constraints &= ~RigidbodyConstraints2D.FreezePositionY;
+            rb.constraints &= ~RigidbodyConstraints2D.FreezePositionX;
             isActive = true;
         }
         if (Time.time < inActionUntil)
@@ -83,16 +89,14 @@ public class EnemyController : MonoBehaviour
         {
             return;
         }
-        if (broken)
+        if (alive)
         {
-            Vector2 position = rb.position;
 
 
-            position.x = position.x + Time.deltaTime * enemyAttribute.moveSpeed * facingDirection;
-            animator.SetFloat("Move X", facingDirection);
-            animator.SetFloat("Move Y", 0);
+            /*animator.SetFloat("Move X", facingDirection);
+            animator.SetFloat("Move Y", 0);*/
 
-            rb.MovePosition(position);
+            rb.velocity = new Vector2(enemyAttribute.moveSpeed * facingDirection, rb.velocity.y);
         }
 
     }
@@ -102,12 +106,11 @@ public class EnemyController : MonoBehaviour
     }
     
     //Public because we want to call it from elsewhere like the projectile script
-    public void Fix()
+    public void playDeathAnimation()
     {
-        broken = false;
-        rb.simulated = false;
-        //optional if you added the fixed animation
-        animator.SetTrigger("Fixed");
+
+        //should add dealth animation later
+        Destroy(gameObject);
     }
 
     private void Move()
@@ -115,5 +118,28 @@ public class EnemyController : MonoBehaviour
         rb.velocity = new Vector2(facingDirection * enemyAttribute.moveSpeed, rb.velocity.y);
     }
 
+    public void receiveDamage(float value, int direction, Vector2 force, float hitRecovery)
+    {
+        StopAllCoroutines();
+        float newHealth = enemyAttribute.getHP() - value;
+        if (newHealth <= 0)
+        {
+            newHealth = 0;
+        }
+        enemyAttribute.setHP(newHealth);
+        healthBar.GetComponent<HealthBar>().updateLength();
+        if (enemyAttribute.getHP() - value<= 0)
+        {
+            playDeathAnimation();
+        }
+        inActionUntil = hitRecovery + Time.time;
+        rb.velocity = new Vector2(force.x * direction, force.y);
+        StartCoroutine(ResetForce(hitRecovery));
 
+    }
+    private IEnumerator ResetForce(float hitRecovery)
+    {
+        yield return new WaitForSeconds(hitRecovery);
+        rb.velocity = Vector2.zero;
+    }
 }

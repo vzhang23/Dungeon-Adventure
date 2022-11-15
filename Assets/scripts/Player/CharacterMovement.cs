@@ -99,10 +99,15 @@ public class CharacterMovement : MonoBehaviour
             }
         }
     }
-    public void applyVelocity(float x, float y)
+    public void changeVelocity(float x, float y)
     {
 
         rb.velocity = new Vector2(x, y);
+    }
+    public void addForce(float x, float y)
+    {
+
+        rb.AddForce(new Vector2(x, y));
     }
     public Vector2 getVelocity()
     {
@@ -115,7 +120,8 @@ public class CharacterMovement : MonoBehaviour
         {
             currentJump = 0;
         }
-        applyVelocity(moveDirection * playerAttribute.moveSpeed, rb.velocity.y);
+
+        changeVelocity(moveDirection * playerAttribute.moveSpeed, rb.velocity.y);
 
         if(moveDirection<0 && faceingDirection != -1)
         {
@@ -174,7 +180,7 @@ public class CharacterMovement : MonoBehaviour
         {
             if (isGrounded)
             {
-                applyVelocity(0, 0);
+                changeVelocity(0, 0);
             }
             cooldownFinish = Time.time + playerAttribute.weapon[i].GetComponent<PlayerWeapon>().coolDown;
             inActionUntil = Time.time + playerAttribute.weapon[i].GetComponent<PlayerWeapon>().recoveryTime;
@@ -193,6 +199,20 @@ public class CharacterMovement : MonoBehaviour
     {
         playerAttribute.wearArmor(newArmor);
         currentArmorParts.Add(newArmor.partOfArmor, newArmor);
+    }
+    public void receiveDamage(float value, int direction, Vector2 force, float hitRecovery)
+    {
+        StopAllCoroutines();
+        playerAttribute.hp -= value;
+        inActionUntil = hitRecovery + Time.time;
+        changeVelocity(force.x* direction, force.y);
+        StartCoroutine(ResetForce(hitRecovery));
+
+    }
+    private IEnumerator ResetForce(float hitRecovery)
+    {
+        yield return new WaitForSeconds(hitRecovery);
+        rb.velocity = Vector2.zero;
     }
 
 }
