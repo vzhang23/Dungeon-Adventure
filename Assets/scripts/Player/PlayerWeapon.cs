@@ -5,6 +5,8 @@ public class PlayerWeapon : MonoBehaviour
 {
     public float attackMultiplier;
     public float duration;
+    public float coolDown;
+    public float recoveryTime;
     public Vector2 attactOffset;
     public Vector2 speed;
     public bool followPlayer;
@@ -17,7 +19,7 @@ public class PlayerWeapon : MonoBehaviour
     {
         mainPlayer = GameObject.FindGameObjectsWithTag("player")[0];
         CharacterMovement cs = mainPlayer.GetComponent<CharacterMovement>();
-        Object.Destroy(gameObject, duration);
+        Destroy(gameObject, duration);
         Vector2 currentOffset = new Vector2(attactOffset.x, attactOffset.y);
         GameObject player = GameObject.FindGameObjectsWithTag("player")[0];
 

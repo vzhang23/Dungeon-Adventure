@@ -18,8 +18,8 @@ public class PlayerArmor : MonoBehaviour
         partOfArmor = rangeOfPart[Random.Range(0, rangeOfPart.Length)];
         hp = Random.Range(8, 20)/10f;
         mp = Random.Range(8, 20) / 10f;
-        attack = Random.Range(8, 200) / 10f;
-        defense = Random.Range(8, 200) / 10f;
+        attack = Random.Range(8, 20) / 10f;
+        defense = Random.Range(8, 20) / 10f;
         jumpLimit = Random.Range(0, 2);
         moveSpeed= Random.Range(-1, 3);
     }

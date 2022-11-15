@@ -10,11 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6722048861963856302}
   - component: {fileID: 6603043352329912657}
-  - component: {fileID: 1415484093980253558}
   - component: {fileID: 3017177650306663132}
-  - component: {fileID: 3319141280935301636}
+  - component: {fileID: 6264397305425490886}
   m_Layer: 0
-  m_Name: playerSword
+  m_Name: enemySword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,23 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1415484093980253558
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7732845678848063090}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 867eb3e772bf1154aa82e6c7f2b80d10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackMultiplier: 1
-  duration: 0.5
-  attactOffset: {x: 0.5, y: 0}
-  speed: {x: 0, y: 0}
-  followPlayer: 1
 --- !u!61 &3017177650306663132
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -130,7 +112,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.32, y: 0.37}
   m_EdgeRadius: 0
---- !u!114 &3319141280935301636
+--- !u!114 &6264397305425490886
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -139,11 +121,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7732845678848063090}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 867eb3e772bf1154aa82e6c7f2b80d10, type: 3}
+  m_Script: {fileID: 11500000, guid: 1eb979a8188ce5d499e3de0f2ee6553c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackMultiplier: 0
-  duration: 0.3
+  attackMultiplier: 1
+  duration: 1
   attactOffset: {x: 0.5, y: 0}
   speed: {x: 0, y: 0}
-  followPlayer: 1
+  follow: 1
+  parent: {fileID: 0}
