@@ -105,6 +105,11 @@ MonoBehaviour:
   attactOffset: {x: 0.5, y: 0}
   speed: {x: 0, y: 0}
   followPlayer: 1
+  force: {x: 15, y: 15}
+  hitRecovery: 0.05
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!61 &3017177650306663132
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -118,7 +123,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.5, y: 0}
+  m_Offset: {x: 0.0003573522, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}

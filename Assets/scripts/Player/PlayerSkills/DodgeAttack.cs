@@ -15,7 +15,7 @@ public class DodgeAttack : MonoBehaviour, PlayerSkill
             lastUsed = Time.time;
             CharacterMovement playerMovement = player.GetComponent<CharacterMovement>();
             PlayerAttribute playerattribute = player.GetComponent<PlayerAttribute>();
-            playerMovement.applyVelocity(forceMultiplier * playerattribute.moveSpeed * playerMovement.faceingDirection * duration, playerMovement.getVelocity().y);
+            playerMovement.changeVelocity(forceMultiplier * playerattribute.moveSpeed * playerMovement.faceingDirection * duration, playerMovement.getVelocity().y);
             playerMovement.inActionUntil = Time.time + duration;
         }
     }
