@@ -564,9 +564,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapMiddleList:
-  - {fileID: 9150600627729049805, guid: 3e1ac1315b85cec4488bee25d6ce972a, type: 3}
-  - {fileID: 7553505959451213010, guid: f340c0ac210ea9341b760a0884f544c7, type: 3}
-  - {fileID: 5551965173529989473, guid: d6e74c8b4ee21624a8c353209278982c, type: 3}
+  - {fileID: 5798450596236011843, guid: a10f52d18cc58b44a9b664c54c564b72, type: 3}
+  - {fileID: 5798450596236011843, guid: 75d0b2920596e8d439d1e23ad58615b9, type: 3}
+  - {fileID: 5798450596236011843, guid: 79171f5daa8540c4b8c7368c93f4d95e, type: 3}
+  - {fileID: 5798450596236011843, guid: b5869d6c247249d4ab77f7fac22f5f44, type: 3}
   mapEndList:
   - {fileID: 5874213143254659502, guid: 224f9033ea55aa74a83e92f45c16e951, type: 3}
   sizeOfMap: 5

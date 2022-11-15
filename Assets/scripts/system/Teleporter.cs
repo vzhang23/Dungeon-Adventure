@@ -21,7 +21,7 @@ public class Teleporter : MonoBehaviour
         if (other.gameObject.tag=="player") {
 
             GameManager gameManager = GameManager.Instance();
-            gameManager.NextStage();
+            StartCoroutine(gameManager.NextStage());
         }
     }
 }

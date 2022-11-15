@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class EnemyAttribute : MonoBehaviour
 {
-    public float hp;
+    public float totalHealth;
+    private float hp;
     public float attack;
     public float defense;
     public float moveSpeed;
@@ -14,12 +15,20 @@ public class EnemyAttribute : MonoBehaviour
     public float waitBeforeAttack;
     void Start()
     {
-        
+        hp = totalHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+    public void setHP(float newHP)
+    {
+        hp = newHP;
+    }
+    public float getHP()
+    {
+        return hp;
     }
 }
