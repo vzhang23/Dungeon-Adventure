@@ -13,6 +13,8 @@ TagManager:
   - sandGround
   - chest
   - chestUI
+  - armor
+  - enemy
   layers:
   - Default
   - TransparentFX
@@ -22,9 +24,9 @@ TagManager:
   - UI
   - ground
   - chest
-  - 
-  - 
-  - 
+  - background
+  - player
+  - enemy
   - 
   - 
   - 

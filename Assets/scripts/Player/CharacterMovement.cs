@@ -16,11 +16,16 @@ public class CharacterMovement : MonoBehaviour
     private int currentJump;
     private bool isGrounded;
     private Dictionary<string, PlayerArmor> currentArmorParts;
+    public List<GameObject> currentSkillsValue;
+    public List<KeyCode> currentSkillsKey;
     private GameObject newArmorPart;
-
+    public float inActionUntil;
+    private float cooldownFinish;
     // Start is called before the first frame update
     void Start()
     {
+        cooldownFinish = 0;
+        inActionUntil = 0;
         currentArmorParts = new Dictionary<string, PlayerArmor>();
         newArmorPart = null;
         isJumping = false;
@@ -32,16 +37,25 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Time.time < inActionUntil)
+        {
+            return;
+        }
         ProcessInput();
 
     }
 
     private void FixedUpdate()
     {
+        if (Time.time < inActionUntil)
+        {
+            return;
+        }
         Move();
     }
     private void ProcessInput()
     {
+        
         moveDirection = Input.GetAxis("Horizontal");
         if (Input.GetKeyDown(KeyCode.W) && currentJump < playerAttribute.jumpLimit)
         {
@@ -76,16 +90,32 @@ public class CharacterMovement : MonoBehaviour
             attackPosition.x = attackPosition.x + 0.5f;
             releaseAttack(attackPosition, 1);
         }
+        for(int i=0; i< currentSkillsKey.Count;i++)
+        {
+            if (Input.GetKeyDown(currentSkillsKey[i]))
+            {
+                
+                currentSkillsValue[i].GetComponent<PlayerSkill>().useSkill(gameObject);
+            }
+        }
     }
+    public void applyVelocity(float x, float y)
+    {
 
+        rb.velocity = new Vector2(x, y);
+    }
+    public Vector2 getVelocity()
+    {
 
+        return rb.velocity;
+    }
     private void Move()
     {
         if (isGrounded)
         {
             currentJump = 0;
         }
-        rb.velocity = new Vector2(moveDirection * playerAttribute.moveSpeed, rb.velocity.y);
+        applyVelocity(moveDirection * playerAttribute.moveSpeed, rb.velocity.y);
 
         if(moveDirection<0 && faceingDirection != -1)
         {
@@ -116,8 +146,17 @@ public class CharacterMovement : MonoBehaviour
         if (armorObjects == (armorObjects | (1 << other.gameObject.layer)))
         {     
             newArmorPart = other.gameObject;
+            string partOfArmor = newArmorPart.GetComponent<PlayerArmor>().partOfArmor;
             print(GameManager.Instance());
-            GameManager.Instance().displayArmorUI(other.gameObject);
+            if (currentArmorParts.ContainsKey(partOfArmor)) {
+                GameManager.Instance().displayArmorUI(other.gameObject, currentArmorParts[partOfArmor]);
+
+            }
+            else
+            {
+                GameManager.Instance().displayArmorUI(other.gameObject);
+            }
+            
         }
 
     }
@@ -131,7 +170,16 @@ public class CharacterMovement : MonoBehaviour
     }
     void releaseAttack(Vector2 position, int i)
     {
-        Instantiate(playerAttribute.weapon[i], position,  playerAttribute.weapon[i].transform.rotation);
+        if (cooldownFinish <= Time.time)
+        {
+            if (isGrounded)
+            {
+                applyVelocity(0, 0);
+            }
+            cooldownFinish = Time.time + playerAttribute.weapon[i].GetComponent<PlayerWeapon>().coolDown;
+            inActionUntil = Time.time + playerAttribute.weapon[i].GetComponent<PlayerWeapon>().recoveryTime;
+            Instantiate(playerAttribute.weapon[i], position, playerAttribute.weapon[i].transform.rotation);
+        }
 
     }
 
