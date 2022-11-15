@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7556ef4e10eed5144802b3d84166e535, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 0.2
-  cooldown: 1
+  duration: 0.1
+  cooldown: 0.5
   lastUsed: 0
-  forceMultiplier: 10
+  forceMultiplier: 40

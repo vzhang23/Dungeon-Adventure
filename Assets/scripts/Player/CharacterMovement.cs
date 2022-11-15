@@ -20,9 +20,11 @@ public class CharacterMovement : MonoBehaviour
     public List<KeyCode> currentSkillsKey;
     private GameObject newArmorPart;
     public float inActionUntil;
+    private float cooldownFinish;
     // Start is called before the first frame update
     void Start()
     {
+        cooldownFinish = 0;
         inActionUntil = 0;
         currentArmorParts = new Dictionary<string, PlayerArmor>();
         newArmorPart = null;
@@ -35,6 +37,10 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Time.time < inActionUntil)
+        {
+            return;
+        }
         ProcessInput();
 
     }
@@ -49,9 +55,7 @@ public class CharacterMovement : MonoBehaviour
     }
     private void ProcessInput()
     {
-        if (Time.time< inActionUntil) {
-            return;
-        }
+        
         moveDirection = Input.GetAxis("Horizontal");
         if (Input.GetKeyDown(KeyCode.W) && currentJump < playerAttribute.jumpLimit)
         {
@@ -142,8 +146,17 @@ public class CharacterMovement : MonoBehaviour
         if (armorObjects == (armorObjects | (1 << other.gameObject.layer)))
         {     
             newArmorPart = other.gameObject;
+            string partOfArmor = newArmorPart.GetComponent<PlayerArmor>().partOfArmor;
             print(GameManager.Instance());
-            GameManager.Instance().displayArmorUI(other.gameObject);
+            if (currentArmorParts.ContainsKey(partOfArmor)) {
+                GameManager.Instance().displayArmorUI(other.gameObject, currentArmorParts[partOfArmor]);
+
+            }
+            else
+            {
+                GameManager.Instance().displayArmorUI(other.gameObject);
+            }
+            
         }
 
     }
@@ -157,7 +170,16 @@ public class CharacterMovement : MonoBehaviour
     }
     void releaseAttack(Vector2 position, int i)
     {
-        Instantiate(playerAttribute.weapon[i], position,  playerAttribute.weapon[i].transform.rotation);
+        if (cooldownFinish <= Time.time)
+        {
+            if (isGrounded)
+            {
+                applyVelocity(0, 0);
+            }
+            cooldownFinish = Time.time + playerAttribute.weapon[i].GetComponent<PlayerWeapon>().coolDown;
+            inActionUntil = Time.time + playerAttribute.weapon[i].GetComponent<PlayerWeapon>().recoveryTime;
+            Instantiate(playerAttribute.weapon[i], position, playerAttribute.weapon[i].transform.rotation);
+        }
 
     }
 

@@ -47,6 +47,8 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Init();
+        armorUI.SetActive(true);
+        armorUI.SetActive(false);
     }
 
 
@@ -84,6 +86,17 @@ public class GameManager : MonoBehaviour
 
         string newText = string.Format("Part: {0} \n HP multiplier: {1}\n MP multiplier: {2}\n ATTACK multiplier: {3}\n DEFENSE multiplier: {4}\n JUMP LIMIT increase: {5}\n SPEED increase: {6} \n Press J to equip", armor.partOfArmor, armor.hp, armor.mp, armor.attack, armor.defense, armor.jumpLimit, armor.moveSpeed);
         
+        textBox.SetText(newText);
+    }
+
+    public void displayArmorUI(GameObject armorObject, PlayerArmor currentArmor)
+    {
+        PlayerArmor armor = armorObject.GetComponent<PlayerArmor>();
+        armorUI.SetActive(true);
+        TextMeshProUGUI textBox = armorUI.GetComponentInChildren<TextMeshProUGUI>();
+
+        string newText = string.Format("Part: {0} \n HP multiplier: {1}\n MP multiplier: {2}\n ATTACK multiplier: {3}\n DEFENSE multiplier: {4}\n JUMP LIMIT increase: {5}\n SPEED increase: {6} \n Press J to equip", currentArmor.partOfArmor, currentArmor.hp + "->" + armor.mp, currentArmor.mp + "->" + armor.mp, currentArmor.attack + "->" + armor.attack, currentArmor.defense + "->" + armor.defense, currentArmor.jumpLimit + "->" + armor.jumpLimit, currentArmor.moveSpeed + "->" + armor.moveSpeed);
+
         textBox.SetText(newText);
     }
 
