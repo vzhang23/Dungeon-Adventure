@@ -62,6 +62,7 @@ public class GameManager : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+        Debug.Log("Quit");
     }
     public void ReturnToMenu()
     {
