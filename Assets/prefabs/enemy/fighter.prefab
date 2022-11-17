@@ -71,8 +71,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1420011799
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
@@ -84,7 +84,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!114 &1306707768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,7 +267,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 7
+  m_Constraints: 5
 --- !u!114 &5661664309316911850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,6 +286,8 @@ MonoBehaviour:
   inActionUntil: 0
   cooldownFinish: 0
   healthBar: {fileID: 356450540531415688}
+  dropEquipmentChance: 0.2
+  equipmentToDrop: {fileID: 6032584721102434861, guid: e5db2fd44826d1c4e80c4ef2717bb26e, type: 3}
 --- !u!114 &5661664309316911849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,13 +301,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalHealth: 100
+  hp: 0
   attack: 10
-  defense: 0
+  defense: 30
   moveSpeed: 1.5
-  cooldown: 3
+  exp: 10
+  cooldown: 2
   recovery: 2
   weapon: {fileID: 7732845678848063090, guid: 1caabde0a2fa87341844d631df08602d, type: 3}
-  waitBeforeAttack: 0.4
+  waitBeforeAttack: 0.2
 --- !u!95 &1852369743
 Animator:
   serializedVersion: 4

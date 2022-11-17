@@ -13,7 +13,7 @@ public class DodgeAttack : MonoBehaviour, PlayerSkill
     {
         if (lastUsed + cooldown <= Time.time) {
             lastUsed = Time.time;
-            CharacterMovement playerMovement = player.GetComponent<CharacterMovement>();
+            PlayerMovement playerMovement = player.GetComponent<PlayerMovement>();
             PlayerAttribute playerattribute = player.GetComponent<PlayerAttribute>();
             playerMovement.changeVelocity(forceMultiplier * playerattribute.moveSpeed * playerMovement.faceingDirection * duration, playerMovement.getVelocity().y);
             playerMovement.inActionUntil = Time.time + duration;
