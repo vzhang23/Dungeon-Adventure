@@ -33,30 +33,40 @@ public class EnemyWeapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        float timePassed = Time.time - startTime;
-        if (follow)
+        try
         {
-            Vector2 currentOffset = new Vector2(attactOffset.x + timePassed * speed.x, attactOffset.y + timePassed * speed.y);
+            float timePassed = Time.time - startTime;
+            if (follow)
+            {
+                Vector2 currentOffset = new Vector2(attactOffset.x + timePassed * speed.x, attactOffset.y + timePassed * speed.y);
 
-            gameObject.transform.position = new Vector2(parent.transform.position.x + currentOffset.x * direction, parent.transform.position.y + currentOffset.y);
-        }
-        else
+                gameObject.transform.position = new Vector2(parent.transform.position.x + currentOffset.x * direction, parent.transform.position.y + currentOffset.y);
+            }
+            else
+            {
+                Vector2 currentOffset = new Vector2(startingPosition.x + timePassed * speed.x * direction, startingPosition.y + timePassed * speed.y);
+                gameObject.transform.position = currentOffset;
+            }
+        }catch(System.Exception e)
         {
-            Vector2 currentOffset = new Vector2(startingPosition.x + timePassed * speed.x * direction, startingPosition.y + timePassed * speed.y);
-            gameObject.transform.position = currentOffset;
+
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        print("HIT");
-        if (collision.gameObject.tag == "player" && !dealDamage)
+        try
         {
-            print("DEAL");
-            dealDamage = true;
-            EnemyAttribute ea = parent.GetComponent<EnemyAttribute>();
-            collision.gameObject.GetComponent<CharacterMovement>().receiveDamage(ea.attack * attackMultiplier, direction, force, hitRecovery);
+            if (collision.gameObject.tag == "player" && !dealDamage)
+            {
+                dealDamage = true;
+                EnemyAttribute ea = parent.GetComponent<EnemyAttribute>();
+                collision.gameObject.GetComponent<PlayerMovement>().receiveDamage(ea.attack * attackMultiplier, direction, force, hitRecovery);
+            }
+            }
+        catch (System.Exception e)
+        {
+
         }
     }
 

@@ -1,8 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     public PlayerAttribute playerAttribute;
     public Transform groundCheck;
@@ -18,6 +19,7 @@ public class CharacterMovement : MonoBehaviour
     private Dictionary<string, PlayerArmor> currentArmorParts;
     public List<GameObject> currentSkillsValue;
     public List<KeyCode> currentSkillsKey;
+    public List<KeyCode> availableSkillsKey;
     private GameObject newArmorPart;
     public float inActionUntil;
     private float cooldownFinish;
@@ -99,6 +101,15 @@ public class CharacterMovement : MonoBehaviour
             }
         }
     }
+
+    internal void learnSkill(GameObject gameObject)
+    {
+        KeyCode k = availableSkillsKey[0];
+        availableSkillsKey.Remove(0);
+        currentSkillsKey.Add(k);
+        currentSkillsValue.Add(gameObject);
+    }
+
     public void changeVelocity(float x, float y)
     {
 
@@ -203,10 +214,14 @@ public class CharacterMovement : MonoBehaviour
     public void receiveDamage(float value, int direction, Vector2 force, float hitRecovery)
     {
         StopAllCoroutines();
-        playerAttribute.hp -= value;
+        playerAttribute.hp -= value * value / playerAttribute.defense;
         inActionUntil = hitRecovery + Time.time;
         changeVelocity(force.x* direction, force.y);
         StartCoroutine(ResetForce(hitRecovery));
+        if (playerAttribute.hp <= 0)
+        {
+            Destroy(gameObject);
+        }
 
     }
     private IEnumerator ResetForce(float hitRecovery)

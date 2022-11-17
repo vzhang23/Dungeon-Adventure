@@ -22,7 +22,7 @@ public class PlayerWeapon : MonoBehaviour
     void Start()
     {
         mainPlayer = GameObject.FindGameObjectsWithTag("player")[0];
-        CharacterMovement cs = mainPlayer.GetComponent<CharacterMovement>();
+        PlayerMovement cs = mainPlayer.GetComponent<PlayerMovement>();
         Destroy(gameObject, duration);
         Vector2 currentOffset = new Vector2(attactOffset.x, attactOffset.y);
         GameObject player = GameObject.FindGameObjectsWithTag("player")[0];
