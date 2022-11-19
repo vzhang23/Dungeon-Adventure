@@ -23,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
     private GameObject newArmorPart;
     public float inActionUntil;
     private float cooldownFinish;
+    private float lastBeenHit;
+    public float beenHitCooldown;
     // Start is called before the first frame update
     void Start()
     {
@@ -83,14 +85,14 @@ public class PlayerMovement : MonoBehaviour
             }
             Vector2 attackPosition = gameObject.transform.position;
             attackPosition.x = attackPosition.x + 0.5f;
-            releaseAttack(attackPosition, 0);
+            StartCoroutine(releaseAttack(attackPosition, 0));
         }
 
         if (Input.GetKeyDown(KeyCode.U))
         {
             Vector2 attackPosition = gameObject.transform.position;
             attackPosition.x = attackPosition.x + 0.5f;
-            releaseAttack(attackPosition, 1);
+            StartCoroutine(releaseAttack(attackPosition, 1));
         }
         for(int i=0; i< currentSkillsKey.Count;i++)
         {
@@ -185,7 +187,7 @@ public class PlayerMovement : MonoBehaviour
             GameManager.Instance().hideArmorUI();
         }
     }
-    void releaseAttack(Vector2 position, int i)
+    IEnumerator releaseAttack(Vector2 position, int i)
     {
         if (cooldownFinish <= Time.time)
         {
@@ -193,8 +195,11 @@ public class PlayerMovement : MonoBehaviour
             {
                 changeVelocity(0, 0);
             }
-            cooldownFinish = Time.time + playerAttribute.weapon[i].GetComponent<PlayerWeapon>().coolDown;
-            inActionUntil = Time.time + playerAttribute.weapon[i].GetComponent<PlayerWeapon>().recoveryTime;
+            PlayerWeapon weapon = playerAttribute.weapon[i].GetComponent<PlayerWeapon>();
+
+            cooldownFinish = Time.time + weapon.coolDown;
+            inActionUntil = Time.time + weapon.recoveryTime;
+            yield return new WaitForSeconds(weapon.waitBeforeAttack);
             Instantiate(playerAttribute.weapon[i], position, playerAttribute.weapon[i].transform.rotation);
         }
 
@@ -213,6 +218,10 @@ public class PlayerMovement : MonoBehaviour
     }
     public void receiveDamage(float value, int direction, Vector2 force, float hitRecovery)
     {
+        if (lastBeenHit + beenHitCooldown >= Time.time)
+        {
+            return;
+        }
         StopAllCoroutines();
         playerAttribute.hp -= value * value / playerAttribute.defense;
         inActionUntil = hitRecovery + Time.time;
@@ -222,7 +231,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
+        lastBeenHit = Time.time;
     }
     private IEnumerator ResetForce(float hitRecovery)
     {

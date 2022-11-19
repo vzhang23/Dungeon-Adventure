@@ -654,8 +654,6 @@ MonoBehaviour:
   learnLevel: 0200000004000000070000000a0000000d00000011000000
   hpMultiplier: 1.2
   mpMultiplier: 1.2
-  attackMultiplier: 1.2
-  defenseMultiplier: 1.2
   totalMP: 100
   mp: 0
   level: 1
@@ -665,6 +663,7 @@ MonoBehaviour:
   - {fileID: 7732845678848063090, guid: e4f31d84b3d68da4e911a3583b69b16d, type: 3}
   - {fileID: 7732845678848063090, guid: c558ded89dbc32046b402c69af570d52, type: 3}
   - {fileID: 0}
+  levelUI: {fileID: 0}
 --- !u!114 &6532899708885022207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -692,6 +691,7 @@ MonoBehaviour:
   currentSkillsKey: 6b000000
   availableSkillsKey: 69000000
   inActionUntil: 0
+  beenHitCooldown: 0.5
 --- !u!1 &7593891503521615070
 GameObject:
   m_ObjectHideFlags: 0
