@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6722048861963856302}
   - component: {fileID: 6603043352329912657}
-  - component: {fileID: 1415484093980253558}
   - component: {fileID: 3017177650306663132}
+  - component: {fileID: 6264397305425490886}
   m_Layer: 0
-  m_Name: playerLaser
+  m_Name: enemySword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7732845678848063090}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.3898, y: 2.02, z: 0}
-  m_LocalScale: {x: 2.670217, y: 0.823645, z: 1}
+  m_LocalPosition: {x: -4.391, y: 2.02, z: 0}
+  m_LocalScale: {x: 3.4454415, y: 2.109375, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -86,30 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1415484093980253558
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7732845678848063090}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 867eb3e772bf1154aa82e6c7f2b80d10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackMultiplier: 1
-  duration: 2
-  coolDown: 1
-  recoveryTime: 0
-  attactOffset: {x: 0, y: 0}
-  speed: {x: 10, y: 0}
-  followPlayer: 0
-  force: {x: 5, y: 5}
-  hitRecovery: 0.1
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 1024
 --- !u!61 &3017177650306663132
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -123,7 +99,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.000019848347, y: 0.00000013411045}
+  m_Offset: {x: -0.0008643642, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -134,5 +110,25 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.41315788, y: 0.93212616}
+  m_Size: {x: 0.32000017, y: 0.37}
   m_EdgeRadius: 0
+--- !u!114 &6264397305425490886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7732845678848063090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eb979a8188ce5d499e3de0f2ee6553c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackMultiplier: 1
+  duration: 1
+  attactOffset: {x: 0.8, y: 0}
+  speed: {x: 0, y: 0}
+  follow: 1
+  parent: {fileID: 0}
+  force: {x: 15, y: 15}
+  hitRecovery: 0.15

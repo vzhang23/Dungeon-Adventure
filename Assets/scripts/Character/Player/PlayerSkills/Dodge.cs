@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DodgeAttack : MonoBehaviour, PlayerSkill
+public class Dodge : MonoBehaviour, PlayerSkill
 {
     public float duration;
     public float cooldown;
-    public float lastUsed=0;
+    private float lastUsed=0;
     public float forceMultiplier;
 
     public void useSkill(GameObject player)
@@ -14,8 +14,8 @@ public class DodgeAttack : MonoBehaviour, PlayerSkill
         if (lastUsed + cooldown <= Time.time) {
             lastUsed = Time.time;
             PlayerMovement playerMovement = player.GetComponent<PlayerMovement>();
-            PlayerAttribute playerattribute = player.GetComponent<PlayerAttribute>();
-            playerMovement.changeVelocity(forceMultiplier * playerattribute.moveSpeed * playerMovement.faceingDirection * duration, playerMovement.getVelocity().y);
+            PlayerAttribute playerAttribute = player.GetComponent<PlayerAttribute>();
+            playerMovement.changeVelocity(forceMultiplier * playerAttribute.moveSpeed * playerMovement.faceingDirection * duration, playerMovement.getVelocity().y);
             playerMovement.inActionUntil = Time.time + duration;
         }
     }

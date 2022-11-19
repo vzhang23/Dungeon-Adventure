@@ -13,13 +13,17 @@ public class EnemyWeapon : MonoBehaviour
     private float startTime;
     private int direction;
     public GameObject parent;
-    private bool dealDamage;
+    public int dealDamageTimes;
+    private int currentDealDamageTimes;
+    private float lastDealDamage;
+    public float dealDamageCooldown;
     public Vector2 force;
     public float hitRecovery;
     // Start is called before the first frame update
     void Start()
     {
-        dealDamage = false;
+        lastDealDamage = Time.time;
+        currentDealDamageTimes = 0;
         EnemyController cs = parent.GetComponent<EnemyController>();
         Destroy(gameObject, duration);
         Vector2 currentOffset = new Vector2(attactOffset.x, attactOffset.y);
@@ -47,7 +51,7 @@ public class EnemyWeapon : MonoBehaviour
                 Vector2 currentOffset = new Vector2(startingPosition.x + timePassed * speed.x * direction, startingPosition.y + timePassed * speed.y);
                 gameObject.transform.position = currentOffset;
             }
-        }catch(System.Exception e)
+        }catch(System.Exception)
         {
 
         }
@@ -57,14 +61,15 @@ public class EnemyWeapon : MonoBehaviour
     {
         try
         {
-            if (collision.gameObject.tag == "player" && !dealDamage)
+            if (collision.gameObject.tag == "player" && currentDealDamageTimes<=dealDamageTimes && lastDealDamage+dealDamageCooldown<=Time.time)
             {
-                dealDamage = true;
+                lastDealDamage = Time.time;
+                currentDealDamageTimes++;
                 EnemyAttribute ea = parent.GetComponent<EnemyAttribute>();
                 collision.gameObject.GetComponent<PlayerMovement>().receiveDamage(ea.attack * attackMultiplier, direction, force, hitRecovery);
             }
             }
-        catch (System.Exception e)
+        catch (System.Exception)
         {
 
         }

@@ -6,5 +6,5 @@ using UnityEngine;
 
 public interface PlayerSkill
 {
-    public void useSkill(GameObject player);
+    public void useSkill(GameObject player) { }
 }

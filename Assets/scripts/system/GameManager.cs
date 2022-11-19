@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour
     private static int stageNumber=1;
     public static GameManager instance = null;
     public GameObject armorUI;
-    public GameObject playerLevelUI;
     void Awake()
     {
         instance = this;
@@ -107,12 +106,6 @@ public class GameManager : MonoBehaviour
     {
         armorUI.SetActive(false);
     }
-    public void changePlayerLevelUI(int playerLevel)
-    {
-        TextMeshProUGUI textBox = playerLevelUI.GetComponentInChildren<TextMeshProUGUI>();
-        string newText = string.Format("Player Level:"+ playerLevel);
 
-        textBox.SetText(newText);
-    }
 
 }

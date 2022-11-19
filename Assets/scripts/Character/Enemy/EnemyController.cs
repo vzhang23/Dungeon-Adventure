@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -20,9 +21,24 @@ public class EnemyController : MonoBehaviour
     public GameObject healthBar;
     public float dropEquipmentChance;
     public GameObject equipmentToDrop;
+    private string status;
+    public float distanceToStaySafe;
+    private float whenToChangeDirection;
+    private float currentMovementSpeed;
+    public GameObject attackIndicator;
+    public GameObject sleepIndicator;
+    public int superArmor;
+    private GameObject currentAttack;
+    private float lastBeenHit;
+    public float beenHitCooldown;
     // Start is called before the first frame update
     void Start()
     {
+        
+
+        distanceToStaySafe = UnityEngine.Random.Range(2f, 4f);
+        whenToChangeDirection = Time.time;
+        status = "def";
         cooldownFinish = 0;
         inActionUntil = 0;
         isAttacking = false;
@@ -30,7 +46,9 @@ public class EnemyController : MonoBehaviour
         enemyAttribute = gameObject.GetComponent<EnemyAttribute>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        
+        currentMovementSpeed = enemyAttribute.moveSpeed * UnityEngine.Random.Range(0.2f, 0.5f);
+
+
     }
 
     private void Awake()
@@ -38,16 +56,20 @@ public class EnemyController : MonoBehaviour
         
         player = GameObject.FindGameObjectWithTag("player");
     }
-    void Update()
+    void LateUpdate()
     {
+
         try { 
             if(!alive)
             {
                 return;
             }
             float distance = gameObject.transform.position.x - player.gameObject.transform.position.x;
-            if (distance<=5 || enemyAttribute.hp!=enemyAttribute.totalHealth )
+            if ((sleepIndicator.activeSelf==false && distance <= 5 ) || enemyAttribute.hp!=enemyAttribute.totalHealth )
             {
+                print("S"+sleepIndicator.activeSelf);
+                print("D:"+distance);
+                print(enemyAttribute.hp+":"+ enemyAttribute.totalHealth);
                 rb.constraints &= ~RigidbodyConstraints2D.FreezePositionX;
                 isActive = true;
             }
@@ -55,23 +77,79 @@ public class EnemyController : MonoBehaviour
             {
                 return;
             }
+
             if (isActive)
             {
-                if (gameObject.transform.position.x < player.transform.position.x)
+
+                if (status == "def" && Mathf.Abs(gameObject.transform.position.y - player.transform.position.y) <= 2)
                 {
-                    facingDirection = 1;
+                    if (whenToChangeDirection <= Time.time)
+                    {
+
+                        currentMovementSpeed = enemyAttribute.moveSpeed * UnityEngine.Random.Range(0.4f, 0.8f);
+                        whenToChangeDirection = Time.time + UnityEngine.Random.Range(0.7f, 1.5f);
+                        if (gameObject.transform.position.x < player.transform.position.x)
+                        {
+                            if (gameObject.transform.position.x > player.transform.position.x - distanceToStaySafe)
+                            {
+                                facingDirection = -1;
+                            }
+                            else
+                            {
+                                facingDirection = 1;
+                            }
+                        }
+                        else
+                        {
+                            if (gameObject.transform.position.x < player.transform.position.x + distanceToStaySafe)
+                            {
+                                facingDirection = 1;
+                            }
+                            else
+                            {
+                                facingDirection = -1;
+                            }
+                        }
+                        if (UnityEngine.Random.Range(0, 100) <= 50)
+                        {
+                            print("change to att");
+                            status = "att";
+                        }
+                    }
+                }
+                else if(status=="att")
+                {
+                    currentMovementSpeed = enemyAttribute.moveSpeed;
+                    if (isAttacking)
+                    {
+                        StartCoroutine(releaseAttack(gameObject.transform.position));
+
+                        print("change to def");
+                        status = "def";
+                    }
+
+                    if (gameObject.transform.position.x < player.transform.position.x)
+                    {
+                        facingDirection = 1;
+                    }
+                    else
+                    {
+                        facingDirection = -1;
+                    }
                 }
                 else
                 {
-                    facingDirection = -1;
+                    if (whenToChangeDirection <= Time.time)
+                    {
+                        whenToChangeDirection = Time.time + UnityEngine.Random.Range(1f, 2f);
+                        facingDirection = facingDirection * -1;
+                    }
+
                 }
-                if (isAttacking)
-                {
-                    StartCoroutine(releaseAttack(gameObject.transform.position));
-                }
+
             }
         }
-        catch (Exception e)
+        catch (Exception)
         {
 
         }
@@ -80,12 +158,14 @@ public class EnemyController : MonoBehaviour
     {
         if (cooldownFinish <= Time.time)
         {
+            attackIndicator.SetActive(true);
             rb.velocity = new Vector2(0, 0);
             cooldownFinish = Time.time + enemyAttribute.cooldown;
             inActionUntil = Time.time + enemyAttribute.recovery;
             yield return new WaitForSeconds(enemyAttribute.waitBeforeAttack);
-            GameObject proj = Instantiate(enemyAttribute.weapon, position, enemyAttribute.weapon.transform.rotation);
-            proj.GetComponent<EnemyWeapon>().parent = gameObject;
+            currentAttack= Instantiate(enemyAttribute.weapon, position, enemyAttribute.weapon.transform.rotation);
+            currentAttack.GetComponent<EnemyWeapon>().parent = gameObject;
+            attackIndicator.SetActive(false);
         }
 
     }
@@ -103,7 +183,7 @@ public class EnemyController : MonoBehaviour
             /*animator.SetFloat("Move X", facingDirection);
             animator.SetFloat("Move Y", 0);*/
 
-            rb.velocity = new Vector2(enemyAttribute.moveSpeed * facingDirection, rb.velocity.y);
+            rb.velocity = new Vector2(currentMovementSpeed * facingDirection, rb.velocity.y);
         }
 
     }
@@ -111,7 +191,7 @@ public class EnemyController : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other)
     {
     }
-    
+
     //Public because we want to call it from elsewhere like the projectile script
     public void enemydefeat()
     {
@@ -129,9 +209,25 @@ public class EnemyController : MonoBehaviour
         rb.velocity = new Vector2(facingDirection * enemyAttribute.moveSpeed, rb.velocity.y);
     }
 
-    public void receiveDamage(float value, int direction, Vector2 force, float hitRecovery)
+    public void receiveDamage(float value, float attackPower, int direction, Vector2 force, float hitRecovery)
     {
-        StopAllCoroutines();
+        if (lastBeenHit + beenHitCooldown >= Time.time)
+        {
+            return;
+        }
+        if (attackPower> superArmor)
+        {
+            StopAllCoroutines();
+
+            rb.velocity = new Vector2(force.x * direction, force.y);
+            attackIndicator.SetActive(false);
+            inActionUntil = hitRecovery + Time.time;
+            try
+            {
+                Destroy(currentAttack);
+            }
+            catch (Exception) { }
+        }
         float newHealth = enemyAttribute.hp - value*value/ enemyAttribute.defense;
         if (newHealth <= 0)
         {
@@ -143,8 +239,7 @@ public class EnemyController : MonoBehaviour
         {
             enemydefeat();
         }
-        inActionUntil = hitRecovery + Time.time;
-        rb.velocity = new Vector2(force.x * direction, force.y);
+        lastBeenHit = Time.time;
         StartCoroutine(ResetForce(hitRecovery));
 
     }

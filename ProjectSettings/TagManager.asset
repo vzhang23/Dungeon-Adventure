@@ -15,6 +15,7 @@ TagManager:
   - chestUI
   - armor
   - enemy
+  - attackIndicator
   layers:
   - Default
   - TransparentFX

@@ -14,13 +14,21 @@ public class PlayerWeapon : MonoBehaviour
     private float startTime;
     private int direction;
     private GameObject mainPlayer; 
-    private bool dealDamage;
     public Vector2 force;
     public float hitRecovery;
     public LayerMask enemyLayer;
+    public int attackPower;
+    public float waitBeforeAttack;
+
+
+    public int dealDamageTimes;
+    private int currentDealDamageTimes;
+
+
     // Start is called before the first frame update
     void Start()
     {
+        currentDealDamageTimes = 0;
         mainPlayer = GameObject.FindGameObjectsWithTag("player")[0];
         PlayerMovement cs = mainPlayer.GetComponent<PlayerMovement>();
         Destroy(gameObject, duration);
@@ -52,11 +60,11 @@ public class PlayerWeapon : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (enemyLayer == (enemyLayer | (1 << collision.gameObject.layer)) && !dealDamage)
+        if (enemyLayer == (enemyLayer | (1 << collision.gameObject.layer)) && currentDealDamageTimes <= dealDamageTimes)
         {
-            dealDamage = true;
+            currentDealDamageTimes++;
             PlayerAttribute player = mainPlayer.gameObject.GetComponent<PlayerAttribute>();
-            collision.gameObject.GetComponent<EnemyController>().receiveDamage(player.attack * attackMultiplier, direction, force, hitRecovery);
+            collision.gameObject.GetComponent<EnemyController>().receiveDamage(player.attack * attackMultiplier, attackPower, direction, force, hitRecovery);
         }
     }
 

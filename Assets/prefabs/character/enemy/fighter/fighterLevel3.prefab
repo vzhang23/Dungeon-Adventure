@@ -1,0 +1,111 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &4775192270035016528
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 389074154838081529, guid: fbb9e0e1b6a6622419c29e99eabb9896, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.284
+      objectReference: {fileID: 0}
+    - target: {fileID: 2350568424851057409, guid: fbb9e0e1b6a6622419c29e99eabb9896, type: 3}
+      propertyPath: m_text
+      value: dangerous-3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3483656911631490062, guid: fbb9e0e1b6a6622419c29e99eabb9896, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 5662425890465160684, guid: fbb9e0e1b6a6622419c29e99eabb9896, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6367157505258609552, guid: fbb9e0e1b6a6622419c29e99eabb9896, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6367157505258609552, guid: fbb9e0e1b6a6622419c29e99eabb9896, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6367157505258609552, guid: fbb9e0e1b6a6622419c29e99eabb9896, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6367157505258609552, guid: fbb9e0e1b6a6622419c29e99eabb9896, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6367157505258609552, guid: fbb9e0e1b6a6622419c29e99eabb9896, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6367157505258609552, guid: fbb9e0e1b6a6622419c29e99eabb9896, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6367157505258609552, guid: fbb9e0e1b6a6622419c29e99eabb9896, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6367157505258609552, guid: fbb9e0e1b6a6622419c29e99eabb9896, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6367157505258609552, guid: fbb9e0e1b6a6622419c29e99eabb9896, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6367157505258609552, guid: fbb9e0e1b6a6622419c29e99eabb9896, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6367157505258609552, guid: fbb9e0e1b6a6622419c29e99eabb9896, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6367157505258609556, guid: fbb9e0e1b6a6622419c29e99eabb9896, type: 3}
+      propertyPath: superArmor
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6367157505258609556, guid: fbb9e0e1b6a6622419c29e99eabb9896, type: 3}
+      propertyPath: dropEquipmentChance
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6367157505258609558, guid: fbb9e0e1b6a6622419c29e99eabb9896, type: 3}
+      propertyPath: m_Name
+      value: level3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6367157505258609559, guid: fbb9e0e1b6a6622419c29e99eabb9896, type: 3}
+      propertyPath: exp
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 6367157505258609559, guid: fbb9e0e1b6a6622419c29e99eabb9896, type: 3}
+      propertyPath: attack
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6367157505258609559, guid: fbb9e0e1b6a6622419c29e99eabb9896, type: 3}
+      propertyPath: defense
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 6367157505258609559, guid: fbb9e0e1b6a6622419c29e99eabb9896, type: 3}
+      propertyPath: recovery
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6367157505258609559, guid: fbb9e0e1b6a6622419c29e99eabb9896, type: 3}
+      propertyPath: moveSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6367157505258609559, guid: fbb9e0e1b6a6622419c29e99eabb9896, type: 3}
+      propertyPath: totalHealth
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 6367157505258609559, guid: fbb9e0e1b6a6622419c29e99eabb9896, type: 3}
+      propertyPath: waitBeforeAttack
+      value: 0.4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fbb9e0e1b6a6622419c29e99eabb9896, type: 3}

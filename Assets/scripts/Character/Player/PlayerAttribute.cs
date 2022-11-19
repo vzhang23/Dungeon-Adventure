@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerAttribute : CommonAttribute
@@ -16,6 +17,8 @@ public class PlayerAttribute : CommonAttribute
     public int exp;
     public int jumpLimit;
     public List<GameObject> weapon;
+
+    public GameObject levelUI;
     void Start()
     {
         mp = totalMP;
@@ -56,8 +59,11 @@ public class PlayerAttribute : CommonAttribute
         totalMP *= mpMultiplier;
         hp = totalHealth;
         mp = totalMP;
-        GameManager.Instance().changePlayerLevelUI(level);
-        foreach(int i in learnLevel) {
+
+        TextMeshPro textBox = levelUI.GetComponentInChildren<TextMeshPro>();
+        string newText = string.Format("level-" + level);
+        textBox.SetText(newText);
+        foreach (int i in learnLevel) {
             if (i == level)
             {
                 int e = UnityEngine.Random.Range(0, skillsToLearn.Length);
