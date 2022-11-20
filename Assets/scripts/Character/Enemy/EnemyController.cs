@@ -175,8 +175,8 @@ public class EnemyController : MonoBehaviour
         {
 
 
-            /*animator.SetFloat("Move X", facingDirection);
-            animator.SetFloat("Move Y", 0);*/
+            animator.SetFloat("Move X", facingDirection);
+            animator.SetFloat("Move Y", 0);
 
             rb.velocity = new Vector2(currentMovementSpeed * facingDirection, rb.velocity.y);
         }

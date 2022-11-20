@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 958458600661500972}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.6237161, z: -0.5101659}
+  m_LocalPosition: {x: 0, y: 1.293, z: -0.5101659}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -165,7 +165,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.3, y: 0.87}
+  m_AnchoredPosition: {x: 0.3, y: 1.706}
   m_SizeDelta: {x: 1.7286, y: 0.7065}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &1779240557968962655
@@ -500,7 +500,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5952269085499952243}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.9, y: 1.12, z: 0}
+  m_LocalPosition: {x: 6.886, y: 0.965, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -554,7 +554,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: eceb41b1c1be27e4898381b9bf626c87, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 02cc42872354495469ba3f05fe69d104, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -643,7 +643,7 @@ Animator:
   m_GameObject: {fileID: 5952269085499952243}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0d6f760f33b5cbb4fa34279001f1af38, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -801,15 +801,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5172587564236930118, guid: a8cce9495fa22e44da6b0c2d2400fd31, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.73162156
+      value: 1.18771
+      objectReference: {fileID: 0}
+    - target: {fileID: 5172587564236930118, guid: a8cce9495fa22e44da6b0c2d2400fd31, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.523123
       objectReference: {fileID: 0}
     - target: {fileID: 5172587564236930118, guid: a8cce9495fa22e44da6b0c2d2400fd31, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.533
+      value: -0.02
       objectReference: {fileID: 0}
     - target: {fileID: 5172587564236930118, guid: a8cce9495fa22e44da6b0c2d2400fd31, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.015
+      value: -0.0088
       objectReference: {fileID: 0}
     - target: {fileID: 5172587564236930118, guid: a8cce9495fa22e44da6b0c2d2400fd31, type: 3}
       propertyPath: m_LocalPosition.z
