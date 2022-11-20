@@ -2,27 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DashAttack : MonoBehaviour, PlayerSkill
+public class Block : MonoBehaviour, PlayerSkill
 {
     public float duration;
     public float cooldown;
     public float lastUsed;
-    public float forceMultiplier;
-    public float mp;
+    public GameObject blockAttack;
     public void useSkill(GameObject player)
     {
         PlayerMovement playerMovement = player.GetComponent<PlayerMovement>();
         PlayerAttribute playerAttribute = player.GetComponent<PlayerAttribute>();
-        if (playerAttribute.mp >= mp && lastUsed + cooldown <= Time.time)
+        if (lastUsed + cooldown <= Time.time)
         {
-            playerAttribute.mp -= mp;
-            lastUsed = Time.time;
+            playerMovement.changeVelocity(0, 0);
+            playerMovement.status = "block";
+            playerAttribute.setBlockAttack(blockAttack);
             playerMovement.inActionUntil = Time.time + duration;
-            Instantiate(playerAttribute.weapon[0], player.transform.position, playerAttribute.weapon[0].transform.rotation);
-            playerMovement.changeVelocity(forceMultiplier * playerAttribute.moveSpeed * playerMovement.faceingDirection * duration, playerMovement.getVelocity().y);
+            lastUsed = Time.time;
+
         }
     }
-
 
     // Start is called before the first frame update
     void Start()

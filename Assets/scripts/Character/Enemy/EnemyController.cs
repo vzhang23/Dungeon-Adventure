@@ -65,13 +65,11 @@ public class EnemyController : MonoBehaviour
                 return;
             }
             float distance = gameObject.transform.position.x - player.gameObject.transform.position.x;
-            if ((sleepIndicator.activeSelf==false && distance <= 5 ) || enemyAttribute.hp!=enemyAttribute.totalHealth )
+            if (!isActive && (sleepIndicator.activeSelf==false && distance <= 5 ) || enemyAttribute.hp!=enemyAttribute.totalHealth )
             {
-                print("S"+sleepIndicator.activeSelf);
-                print("D:"+distance);
-                print(enemyAttribute.hp+":"+ enemyAttribute.totalHealth);
                 rb.constraints &= ~RigidbodyConstraints2D.FreezePositionX;
                 isActive = true;
+                sleepIndicator.SetActive(false);
             }
             if (Time.time < inActionUntil)
             {
@@ -112,7 +110,6 @@ public class EnemyController : MonoBehaviour
                         }
                         if (UnityEngine.Random.Range(0, 100) <= 50)
                         {
-                            print("change to att");
                             status = "att";
                         }
                     }
@@ -123,8 +120,6 @@ public class EnemyController : MonoBehaviour
                     if (isAttacking)
                     {
                         StartCoroutine(releaseAttack(gameObject.transform.position));
-
-                        print("change to def");
                         status = "def";
                     }
 
