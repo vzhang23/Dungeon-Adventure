@@ -11,9 +11,13 @@ PrefabInstance:
       propertyPath: m_text
       value: dangerous-1
       objectReference: {fileID: 0}
+    - target: {fileID: 5952269085499952241, guid: 021126011b93e954493bc7ba12f7abf0, type: 3}
+      propertyPath: beenHitCooldown
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5952269085499952242, guid: 021126011b93e954493bc7ba12f7abf0, type: 3}
       propertyPath: waitBeforeAttack
-      value: 0.3
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 5952269085499952243, guid: 021126011b93e954493bc7ba12f7abf0, type: 3}
       propertyPath: m_Name

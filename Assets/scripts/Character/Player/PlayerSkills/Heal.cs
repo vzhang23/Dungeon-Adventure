@@ -6,7 +6,7 @@ public class Heal : MonoBehaviour, PlayerSkill
 {
     public float duration;
     public float cooldown;
-    public float lastUsed=0;
+    public float lastUsed;
     public float healAmount;
     public int mp;
 
@@ -20,7 +20,7 @@ public class Heal : MonoBehaviour, PlayerSkill
             playerAttribute.hp = Mathf.Min(playerAttribute.totalHealth, playerAttribute.hp+healAmount);
             playerMovement.changeVelocity(0, 0);
             playerMovement.inActionUntil = Time.time + duration;
-
+            lastUsed = Time.time;
         }
 
     }

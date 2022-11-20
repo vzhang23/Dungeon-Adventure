@@ -18,16 +18,26 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded;
     private Dictionary<string, PlayerArmor> currentArmorParts;
     public List<GameObject> currentSkillsValue;
+    public List<GameObject> currentSkillsValueInstance;
     public List<KeyCode> currentSkillsKey;
+
     public List<KeyCode> availableSkillsKey;
     private GameObject newArmorPart;
     public float inActionUntil;
     private float cooldownFinish;
     private float lastBeenHit;
     public float beenHitCooldown;
+    public string status;
     // Start is called before the first frame update
     void Start()
     {
+        for(int i = 0; i < currentSkillsValue.Count; i++)
+        {
+            GameObject skillInst = Instantiate(currentSkillsValue[i], transform.position, currentSkillsValue[i].transform.rotation);
+            skillInst.transform.parent = gameObject.transform;
+            currentSkillsValueInstance.Add(skillInst);
+        }
+        status = "";
         cooldownFinish = 0;
         inActionUntil = 0;
         currentArmorParts = new Dictionary<string, PlayerArmor>();
@@ -59,7 +69,8 @@ public class PlayerMovement : MonoBehaviour
     }
     private void ProcessInput()
     {
-        
+
+        status = "";
         moveDirection = Input.GetAxis("Horizontal");
         if (Input.GetKeyDown(KeyCode.W) && currentJump < playerAttribute.jumpLimit)
         {
@@ -85,21 +96,21 @@ public class PlayerMovement : MonoBehaviour
             }
             Vector2 attackPosition = gameObject.transform.position;
             attackPosition.x = attackPosition.x + 0.5f;
-            StartCoroutine(releaseAttack(attackPosition, 0));
+            StartCoroutine(releaseAttack(attackPosition, playerAttribute.weapon[0]));
         }
 
         if (Input.GetKeyDown(KeyCode.U))
         {
             Vector2 attackPosition = gameObject.transform.position;
             attackPosition.x = attackPosition.x + 0.5f;
-            StartCoroutine(releaseAttack(attackPosition, 1));
+            StartCoroutine(releaseAttack(attackPosition, playerAttribute.weapon[1]));
         }
-        for(int i=0; i< currentSkillsKey.Count;i++)
+        for(int i=0; i< currentSkillsValueInstance.Count;i++)
         {
             if (Input.GetKeyDown(currentSkillsKey[i]))
             {
-                
-                currentSkillsValue[i].GetComponent<PlayerSkill>().useSkill(gameObject);
+
+                currentSkillsValueInstance[i].GetComponent<PlayerSkill>().useSkill(gameObject);
             }
         }
     }
@@ -109,7 +120,9 @@ public class PlayerMovement : MonoBehaviour
         KeyCode k = availableSkillsKey[0];
         availableSkillsKey.Remove(0);
         currentSkillsKey.Add(k);
-        currentSkillsValue.Add(gameObject);
+        GameObject skillInst=Instantiate(gameObject, transform.position, gameObject.transform.rotation);
+        skillInst.transform.parent = transform;
+        currentSkillsValueInstance.Add(skillInst);
     }
 
     public void changeVelocity(float x, float y)
@@ -187,20 +200,17 @@ public class PlayerMovement : MonoBehaviour
             GameManager.Instance().hideArmorUI();
         }
     }
-    IEnumerator releaseAttack(Vector2 position, int i)
+    IEnumerator releaseAttack(Vector2 position, GameObject weaponObject)
     {
         if (cooldownFinish <= Time.time)
         {
-            if (isGrounded)
-            {
-                changeVelocity(0, 0);
-            }
-            PlayerWeapon weapon = playerAttribute.weapon[i].GetComponent<PlayerWeapon>();
+            changeVelocity(0, 0); 
+            PlayerWeapon weapon = weaponObject.GetComponent<PlayerWeapon>();
 
             cooldownFinish = Time.time + weapon.coolDown;
             inActionUntil = Time.time + weapon.recoveryTime;
             yield return new WaitForSeconds(weapon.waitBeforeAttack);
-            Instantiate(playerAttribute.weapon[i], position, playerAttribute.weapon[i].transform.rotation);
+            Instantiate(weapon, position, weapon.transform.rotation);
         }
 
     }
@@ -218,6 +228,17 @@ public class PlayerMovement : MonoBehaviour
     }
     public void receiveDamage(float value, int direction, Vector2 force, float hitRecovery)
     {
+        if (status == "block")
+        {
+            cooldownFinish = 0;
+            Vector2 attackPosition = gameObject.transform.position;
+            attackPosition.x = attackPosition.x + 0.5f;
+            StartCoroutine(releaseAttack(attackPosition, playerAttribute.getBlockAttack()));
+            return;
+        }
+
+
+
         if (lastBeenHit + beenHitCooldown >= Time.time)
         {
             return;

@@ -18,6 +18,7 @@ public class PlayerAttribute : CommonAttribute
     public int jumpLimit;
     public List<GameObject> weapon;
 
+    public GameObject blockAttack;
     public GameObject levelUI;
     void Start()
     {
@@ -85,5 +86,13 @@ public class PlayerAttribute : CommonAttribute
     public int[] getExpCurve()
     {
         return expCurve;
+    }
+    public void setBlockAttack(GameObject blockAttack)
+    {
+        this.blockAttack = blockAttack;
+    }
+    public GameObject getBlockAttack()
+    {
+        return blockAttack;
     }
 }

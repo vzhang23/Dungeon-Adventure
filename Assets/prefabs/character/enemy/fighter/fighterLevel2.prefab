@@ -33,7 +33,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4427188138723350642, guid: f64ec1eacd77df34abbdfb1b936b6a38, type: 3}
       propertyPath: waitBeforeAttack
-      value: 0.2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4427188138723350643, guid: f64ec1eacd77df34abbdfb1b936b6a38, type: 3}
       propertyPath: m_Name

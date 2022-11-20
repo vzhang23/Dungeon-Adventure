@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1415484093980253558}
   - component: {fileID: 3017177650306663132}
   m_Layer: 0
-  m_Name: playerSword
+  m_Name: playerStrongSword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7732845678848063090}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.391, y: 2.02, z: 0}
-  m_LocalScale: {x: 3.4454415, y: 2.109375, z: 1}
+  m_LocalPosition: {x: -4.3914, y: 2.02, z: 0}
+  m_LocalScale: {x: 5.5468163, y: 3.3958828, z: 1.6099}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -98,20 +98,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 867eb3e772bf1154aa82e6c7f2b80d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackMultiplier: 1.5
-  duration: 0.2
-  coolDown: 1
-  recoveryTime: 0.7
+  attackMultiplier: 2
+  duration: 0.5
+  coolDown: 3
+  recoveryTime: 1
   attactOffset: {x: 0.5, y: 0}
   speed: {x: 0, y: 0}
   followPlayer: 1
   force: {x: 15, y: 15}
-  hitRecovery: 0.05
+  hitRecovery: 0.1
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1024
-  attackPower: 8
-  waitBeforeAttack: 0.4
+  attackPower: 20
+  waitBeforeAttack: 0
   dealDamageTimes: 5
 --- !u!61 &3017177650306663132
 BoxCollider2D:
