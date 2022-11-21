@@ -485,6 +485,7 @@ GameObject:
   - component: {fileID: 5952269085499952242}
   - component: {fileID: 2020128879464474068}
   - component: {fileID: -2698036939716040305}
+  - component: {fileID: 6138754012934633324}
   m_Layer: 10
   m_Name: fighterTemplate
   m_TagString: Untagged
@@ -660,15 +661,41 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5952269085499952243}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.02424404, y: 0}
+  m_Size: {x: 0.5815119, y: 0.98}
+  m_Direction: 0
+--- !u!61 &6138754012934633324
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5952269085499952243}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.63, y: 0.98}
-  m_Direction: 0
+  m_Offset: {x: -0.014546156, y: 0.62064785}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.56, y: 2.56}
+    newSize: {x: 0.63, y: 0.98}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.192636, y: 1.3187042}
+  m_EdgeRadius: 0
 --- !u!1 &8678659849471534315
 GameObject:
   m_ObjectHideFlags: 0
