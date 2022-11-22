@@ -19,7 +19,6 @@ public class EnemyController : MonoBehaviour
     public float inActionUntil;
     public float cooldownFinish;
     public GameObject healthBar;
-    public float dropEquipmentChance;
     public GameObject equipmentToDrop;
     private string status;
     public float distanceToStaySafe;
@@ -27,10 +26,8 @@ public class EnemyController : MonoBehaviour
     private float currentMovementSpeed;
     public GameObject attackIndicator;
     public GameObject sleepIndicator;
-    public int superArmor;
     private GameObject currentAttack;
     private float lastBeenHit;
-    public float beenHitCooldown;
     // Start is called before the first frame update
     void Start()
     {
@@ -108,7 +105,7 @@ public class EnemyController : MonoBehaviour
                                 facingDirection = -1;
                             }
                         }
-                        if (UnityEngine.Random.Range(0, 100) <= 50)
+                        if (UnityEngine.Random.Range(0, 100)/100f <= enemyAttribute.attackChance)
                         {
                             status = "att";
                         }
@@ -160,6 +157,11 @@ public class EnemyController : MonoBehaviour
             yield return new WaitForSeconds(enemyAttribute.waitBeforeAttack);
             currentAttack= Instantiate(enemyAttribute.weapon, position, enemyAttribute.weapon.transform.rotation);
             currentAttack.GetComponent<EnemyWeapon>().parent = gameObject;
+
+            if (!enemyAttribute.weapon.GetComponent<EnemyWeapon>().follow)
+            {
+                currentAttack = null;
+            }
             attackIndicator.SetActive(false);
         }
 
@@ -191,7 +193,7 @@ public class EnemyController : MonoBehaviour
     public void enemydefeat()
     {
         player.GetComponent<PlayerAttribute>().addExp(enemyAttribute.exp);
-        if(UnityEngine.Random.Range(0, 1f) <= dropEquipmentChance)
+        if(UnityEngine.Random.Range(0, 1f) <= enemyAttribute.dropEquipmentChance)
         {
             Instantiate(equipmentToDrop, gameObject.transform.position, equipmentToDrop.transform.rotation);
         }
@@ -206,11 +208,11 @@ public class EnemyController : MonoBehaviour
 
     public void receiveDamage(float value, float attackPower, int direction, Vector2 force, float hitRecovery)
     {
-        if (lastBeenHit + beenHitCooldown >= Time.time)
+        if (lastBeenHit + enemyAttribute.beenHitCooldown >= Time.time)
         {
             return;
         }
-        if (attackPower> superArmor)
+        if (attackPower> enemyAttribute.superArmor)
         {
             StopAllCoroutines();
 

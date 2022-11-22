@@ -35,6 +35,10 @@ PrefabInstance:
       propertyPath: waitBeforeAttack
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4427188138723350642, guid: f64ec1eacd77df34abbdfb1b936b6a38, type: 3}
+      propertyPath: dropEquipmentChance
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 4427188138723350643, guid: f64ec1eacd77df34abbdfb1b936b6a38, type: 3}
       propertyPath: m_Name
       value: fighterLevel2
@@ -85,7 +89,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5022320233414944996, guid: f64ec1eacd77df34abbdfb1b936b6a38, type: 3}
       propertyPath: m_text
-      value: dangerous-2
+      value: fighter-2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f64ec1eacd77df34abbdfb1b936b6a38, type: 3}

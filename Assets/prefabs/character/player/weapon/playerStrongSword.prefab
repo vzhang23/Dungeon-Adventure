@@ -98,9 +98,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 867eb3e772bf1154aa82e6c7f2b80d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackMultiplier: 2
+  attackMultiplier: 1.8
   duration: 0.5
-  coolDown: 3
+  coolDown: 1.5
   recoveryTime: 1
   attactOffset: {x: 0.5, y: 0}
   speed: {x: 0, y: 0}

@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask armorObjects;
     public int faceingDirection;
     public float jumpForce;
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     private float moveDirection;
     private bool isJumping;
     private int currentJump;
@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     private float lastBeenHit;
     public float beenHitCooldown;
     public string status;
+    public string groundType;
     // Start is called before the first frame update
     void Start()
     {
@@ -61,12 +62,25 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (playerAttribute.hp <= 0)
+        {
+            Destroy(gameObject);
+        }
+        if (!isGrounded)
+        {
+            groundType = "";
+        }
         if (Time.time < inActionUntil)
         {
             return;
         }
+        if (groundType == "fireGround")
+        {
+            playerAttribute.hp -= 2f / playerAttribute.defense;
+        }
         Move();
     }
+
     private void ProcessInput()
     {
 
@@ -127,7 +141,20 @@ public class PlayerMovement : MonoBehaviour
 
     public void changeVelocity(float x, float y)
     {
-
+        if (groundType == "iceGround")
+        {
+            float newSpeed = rb.velocity.x + x * 0.05f;
+            if (newSpeed >= playerAttribute.moveSpeed*1.5f)
+            {
+                newSpeed = playerAttribute.moveSpeed * 1.5f;
+            }
+            if (newSpeed <= -playerAttribute.moveSpeed * 1.5f)
+            {
+                newSpeed = -playerAttribute.moveSpeed * 1.5f;
+            }
+            rb.velocity = new Vector2(newSpeed, y);
+            return;
+        }
         rb.velocity = new Vector2(x, y);
     }
     public void addForce(float x, float y)
@@ -146,8 +173,12 @@ public class PlayerMovement : MonoBehaviour
         {
             currentJump = 0;
         }
-
-        changeVelocity(moveDirection * playerAttribute.moveSpeed, rb.velocity.y);
+        float fixSpeed = 1;
+        if (groundType == "sandGround")
+        {
+            fixSpeed = 0.7f;
+        }
+        changeVelocity(moveDirection * playerAttribute.moveSpeed* fixSpeed, rb.velocity.y);
 
         if(moveDirection<0 && faceingDirection != -1)
         {
@@ -171,8 +202,12 @@ public class PlayerMovement : MonoBehaviour
         {
             isGrounded = true;
         }
-        
-     }
+        groundType = other.gameObject.tag;
+    }
+
+
+
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (armorObjects == (armorObjects | (1 << other.gameObject.layer)))
@@ -245,13 +280,13 @@ public class PlayerMovement : MonoBehaviour
         }
         StopAllCoroutines();
         playerAttribute.hp -= value * value / playerAttribute.defense;
-        inActionUntil = hitRecovery + Time.time;
-        changeVelocity(force.x* direction, force.y);
-        StartCoroutine(ResetForce(hitRecovery));
-        if (playerAttribute.hp <= 0)
-        {
-            Destroy(gameObject);
+        if (hitRecovery != 0) {
+
+            inActionUntil = hitRecovery + Time.time;
+            changeVelocity(force.x* direction, force.y);
+            StartCoroutine(ResetForce(hitRecovery));
         }
+        
         lastBeenHit = Time.time;
     }
     private IEnumerator ResetForce(float hitRecovery)

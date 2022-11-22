@@ -10,6 +10,10 @@ public class EnemyAttribute : CommonAttribute
     public float recovery;
     public GameObject weapon;
     public float waitBeforeAttack;
+    public int superArmor;
+    public float beenHitCooldown;
+    public float dropEquipmentChance;
+    public float attackChance;
     void Start()
     {
 

@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2035076367902320994, guid: 5b641fc8e75fad844839521425da9bb4, type: 3}
       propertyPath: m_Name
-      value: level1Normal
+      value: level3Normal
       objectReference: {fileID: 0}
     - target: {fileID: 3553487207837680105, guid: 5b641fc8e75fad844839521425da9bb4, type: 3}
       propertyPath: chance.Array.size
@@ -17,7 +17,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3553487207837680105, guid: 5b641fc8e75fad844839521425da9bb4, type: 3}
       propertyPath: chance.Array.data[0]
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3553487207837680105, guid: 5b641fc8e75fad844839521425da9bb4, type: 3}
       propertyPath: chance.Array.data[1]
@@ -25,11 +25,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3553487207837680105, guid: 5b641fc8e75fad844839521425da9bb4, type: 3}
       propertyPath: chance.Array.data[2]
-      value: 10
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 3553487207837680105, guid: 5b641fc8e75fad844839521425da9bb4, type: 3}
       propertyPath: chance.Array.data[3]
-      value: 60
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3553487207837680105, guid: 5b641fc8e75fad844839521425da9bb4, type: 3}
       propertyPath: chance.Array.data[4]
@@ -37,11 +37,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3553487207837680105, guid: 5b641fc8e75fad844839521425da9bb4, type: 3}
       propertyPath: chance.Array.data[5]
-      value: 8
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3553487207837680105, guid: 5b641fc8e75fad844839521425da9bb4, type: 3}
       propertyPath: chance.Array.data[6]
-      value: 60
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3553487207837680105, guid: 5b641fc8e75fad844839521425da9bb4, type: 3}
       propertyPath: chance.Array.data[7]
@@ -49,7 +49,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3553487207837680105, guid: 5b641fc8e75fad844839521425da9bb4, type: 3}
       propertyPath: chance.Array.data[8]
-      value: 8
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3553487207837680105, guid: 5b641fc8e75fad844839521425da9bb4, type: 3}
       propertyPath: enemyList.Array.size

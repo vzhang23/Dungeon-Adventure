@@ -23,7 +23,7 @@ public class PlayerWeapon : MonoBehaviour
 
     public int dealDamageTimes;
     private int currentDealDamageTimes;
-
+    private string groundType;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +31,7 @@ public class PlayerWeapon : MonoBehaviour
         currentDealDamageTimes = 0;
         mainPlayer = GameObject.FindGameObjectsWithTag("player")[0];
         PlayerMovement cs = mainPlayer.GetComponent<PlayerMovement>();
+        this.groundType = cs.groundType;
         Destroy(gameObject, duration);
         Vector2 currentOffset = new Vector2(attactOffset.x, attactOffset.y);
         GameObject player = GameObject.FindGameObjectsWithTag("player")[0];
@@ -64,7 +65,12 @@ public class PlayerWeapon : MonoBehaviour
         {
             currentDealDamageTimes++;
             PlayerAttribute player = mainPlayer.gameObject.GetComponent<PlayerAttribute>();
-            collision.gameObject.GetComponent<EnemyController>().receiveDamage(player.attack * attackMultiplier, attackPower, direction, force, hitRecovery);
+            float fixAttack = 1;
+            if (groundType == "fireGround")
+            {
+                fixAttack = 1.3f;
+            }
+            collision.gameObject.GetComponent<EnemyController>().receiveDamage(player.attack * attackMultiplier* fixAttack, attackPower, direction, force, hitRecovery);
         }
     }
 
