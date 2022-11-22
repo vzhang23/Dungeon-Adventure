@@ -19,10 +19,14 @@ public class EnemyWeapon : MonoBehaviour
     public float dealDamageCooldown;
     public Vector2 force;
     public float hitRecovery;
+    public bool targetPlayer;
+    private GameObject player;
+    private Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
     {
-        lastDealDamage = Time.time;
+        rb = GetComponent<Rigidbody2D>();
+        lastDealDamage = 0;
         currentDealDamageTimes = 0;
         EnemyController cs = parent.GetComponent<EnemyController>();
         Destroy(gameObject, duration);
@@ -32,11 +36,38 @@ public class EnemyWeapon : MonoBehaviour
         gameObject.transform.position = new Vector2(parent.transform.position.x + currentOffset.x * direction, parent.transform.position.y + currentOffset.y);
         startingPosition = gameObject.transform.position;
         startTime = Time.time;
+        player = GameObject.FindGameObjectWithTag("player");
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (targetPlayer)
+        {
+            float newSpeedX = rb.velocity.x + speed.x * 0.01f * (transform.position.x <= player.transform.position.x ? 1 : -1);
+            float newSpeedY = rb.velocity.y + speed.y * 0.01f * (transform.position.y <= player.transform.position.y ? 1 : -1);
+            if (newSpeedX >= speed.x)
+            {
+                newSpeedX = speed.x;
+            }else if (newSpeedX <= -speed.x)
+            {
+                newSpeedX = -speed.x;
+            }
+            if (newSpeedY >= speed.y)
+            {
+                newSpeedY = speed.y;
+            }
+            else if (newSpeedY <= -speed.y)
+            {
+                newSpeedY = -speed.y;
+            }
+            rb.velocity = new Vector2(newSpeedX, newSpeedY);
+            if (rb.velocity.x >= speed.x)
+            {
+
+            }
+            return;
+        }
         try
         {
             float timePassed = Time.time - startTime;
@@ -59,6 +90,7 @@ public class EnemyWeapon : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        print("!!");
         try
         {
             if (collision.gameObject.tag == "player" && currentDealDamageTimes<=dealDamageTimes && lastDealDamage+dealDamageCooldown<=Time.time)
@@ -72,6 +104,10 @@ public class EnemyWeapon : MonoBehaviour
         catch (System.Exception)
         {
 
+        }
+        if(currentDealDamageTimes > dealDamageTimes)
+        {
+            Destroy(gameObject);
         }
     }
 

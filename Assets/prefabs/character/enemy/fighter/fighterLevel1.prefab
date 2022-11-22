@@ -9,11 +9,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3051435798866590948, guid: 021126011b93e954493bc7ba12f7abf0, type: 3}
       propertyPath: m_text
-      value: dangerous-1
+      value: fighter-1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4923278194490198537, guid: 021126011b93e954493bc7ba12f7abf0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5952269085499952241, guid: 021126011b93e954493bc7ba12f7abf0, type: 3}
       propertyPath: beenHitCooldown
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5952269085499952242, guid: 021126011b93e954493bc7ba12f7abf0, type: 3}
+      propertyPath: superArmor
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5952269085499952242, guid: 021126011b93e954493bc7ba12f7abf0, type: 3}
       propertyPath: waitBeforeAttack

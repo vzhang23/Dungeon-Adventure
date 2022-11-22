@@ -16,9 +16,9 @@ public class Teleporter : MonoBehaviour
         
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.gameObject.tag=="player") {
+        if (collision.gameObject.tag=="player") {
 
             GameManager gameManager = GameManager.Instance();
             StartCoroutine(gameManager.NextStage());

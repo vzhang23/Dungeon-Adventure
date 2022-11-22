@@ -9,7 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2035076367902320994, guid: 5b641fc8e75fad844839521425da9bb4, type: 3}
       propertyPath: m_Name
-      value: mediumFighterGenerator 1
+      value: level2Normal
+      objectReference: {fileID: 0}
+    - target: {fileID: 3553487207837680105, guid: 5b641fc8e75fad844839521425da9bb4, type: 3}
+      propertyPath: chance.Array.size
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3553487207837680105, guid: 5b641fc8e75fad844839521425da9bb4, type: 3}
       propertyPath: chance.Array.data[0]
@@ -24,6 +28,34 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3553487207837680105, guid: 5b641fc8e75fad844839521425da9bb4, type: 3}
+      propertyPath: chance.Array.data[3]
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 3553487207837680105, guid: 5b641fc8e75fad844839521425da9bb4, type: 3}
+      propertyPath: chance.Array.data[4]
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 3553487207837680105, guid: 5b641fc8e75fad844839521425da9bb4, type: 3}
+      propertyPath: chance.Array.data[5]
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3553487207837680105, guid: 5b641fc8e75fad844839521425da9bb4, type: 3}
+      propertyPath: chance.Array.data[6]
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 3553487207837680105, guid: 5b641fc8e75fad844839521425da9bb4, type: 3}
+      propertyPath: chance.Array.data[7]
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 3553487207837680105, guid: 5b641fc8e75fad844839521425da9bb4, type: 3}
+      propertyPath: chance.Array.data[8]
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3553487207837680105, guid: 5b641fc8e75fad844839521425da9bb4, type: 3}
+      propertyPath: enemyList.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3553487207837680105, guid: 5b641fc8e75fad844839521425da9bb4, type: 3}
       propertyPath: enemyList.Array.data[0]
       value: 
       objectReference: {fileID: 4427188138723350643, guid: f64ec1eacd77df34abbdfb1b936b6a38, type: 3}
@@ -35,6 +67,30 @@ PrefabInstance:
       propertyPath: enemyList.Array.data[2]
       value: 
       objectReference: {fileID: 1880345297830674630, guid: 411bd27793116d64f92398f8a7c157f8, type: 3}
+    - target: {fileID: 3553487207837680105, guid: 5b641fc8e75fad844839521425da9bb4, type: 3}
+      propertyPath: enemyList.Array.data[3]
+      value: 
+      objectReference: {fileID: 263681741709874581, guid: 344dc2aa891c7ab48949088d4455b6a6, type: 3}
+    - target: {fileID: 3553487207837680105, guid: 5b641fc8e75fad844839521425da9bb4, type: 3}
+      propertyPath: enemyList.Array.data[4]
+      value: 
+      objectReference: {fileID: 3879192395863322378, guid: 10be0a9f6736a4b48a91952ff956cd34, type: 3}
+    - target: {fileID: 3553487207837680105, guid: 5b641fc8e75fad844839521425da9bb4, type: 3}
+      propertyPath: enemyList.Array.data[5]
+      value: 
+      objectReference: {fileID: 3879192395863322378, guid: d5edc37c75873124082eab2a87292d87, type: 3}
+    - target: {fileID: 3553487207837680105, guid: 5b641fc8e75fad844839521425da9bb4, type: 3}
+      propertyPath: enemyList.Array.data[6]
+      value: 
+      objectReference: {fileID: 8056852613709846202, guid: 8d5cc910428a4894fa0e7a78aa7e8bad, type: 3}
+    - target: {fileID: 3553487207837680105, guid: 5b641fc8e75fad844839521425da9bb4, type: 3}
+      propertyPath: enemyList.Array.data[7]
+      value: 
+      objectReference: {fileID: 5532614674600049831, guid: f67a174279a5ff040be6b9df1c5f77ce, type: 3}
+    - target: {fileID: 3553487207837680105, guid: 5b641fc8e75fad844839521425da9bb4, type: 3}
+      propertyPath: enemyList.Array.data[8]
+      value: 
+      objectReference: {fileID: 5109787131874812268, guid: 4cdc73f7e4ef5104d8b21b880b22a393, type: 3}
     - target: {fileID: 8715518625170376055, guid: 5b641fc8e75fad844839521425da9bb4, type: 3}
       propertyPath: m_RootOrder
       value: 0
