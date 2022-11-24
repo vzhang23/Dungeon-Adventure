@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -10,16 +11,37 @@ public class GameManager : MonoBehaviour
 {
     private string gameScene = "Stage";
     private string menuScene = "MenuScene";
+    private string clearScene = "ClearScene";
+    
     public static int stageNumber=1;
     public static GameManager instance = null;
     public GameObject armorUI;
     public GameObject pauseMenu;
     public static bool pause;
+    public GameObject saveObject;
+    private string newUnlock;
+    GameObject teleporter;
     void Awake()
     {
         pause = false;
         instance = this;
-            
+        teleporter = null;
+    }
+    private void Update()
+    {
+        if (teleporter != null)
+        {
+            teleporter.SetActive(true);
+            teleporter = null;
+        }
+    }
+    public void activeTeleporter(GameObject teleporter)
+    {
+        this.teleporter = teleporter;
+    }
+    public string getNewUnlockText()
+    {
+        return newUnlock;
     }
     public static GameManager Instance()
     {
@@ -65,24 +87,35 @@ public class GameManager : MonoBehaviour
     }
     public void ReturnToMenu()
     {
-        Destroy(GameObject.FindGameObjectWithTag("keepObjectOnLoad"));
-        foreach(GameObject g in GameObject.FindObjectsOfType<GameObject>())
-        {
-            if (g.tag != "GameManager")
-            {
-                g.SetActive(false);
-            }
-        }
+
+        Time.timeScale = 1;
+        GameObject keep=GameObject.FindGameObjectWithTag("keepObjectOnLoad");
+        keep.SetActive(true);
+        Destroy(keep);
+        stageNumber = 1;
         SceneManager.LoadScene(menuScene);
     }
 
-    public IEnumerator NextStage() {
+    public void InfinityLevel()
+    {
+        KeepObjectOnLoad keep = GameObject.FindGameObjectWithTag("keepObjectOnLoad").GetComponent<KeepObjectOnLoad>();
+        keep.activeObject();
+        stageNumber = -1;
+        NextStage();
+    }
 
-        yield return new WaitForSeconds(0.2f);
+    public void NextStage() {
 
-        if (stageNumber == 3)
+        if (stageNumber == -1)
         {
-            ReturnToMenu();
+            GameObject currentPlayer = GameObject.FindGameObjectsWithTag("player")[0];
+            currentPlayer.transform.position = new Vector2(-3, 3);
+            SceneManager.LoadScene(gameScene + stageNumber);
+            Init();
+        }
+        else if (stageNumber == 3)
+        {
+            GameClear();
         }
         else {
             stageNumber++;
@@ -91,6 +124,60 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene(gameScene + stageNumber);
             Init();
         }
+
+
+    }
+    public static GameObject[] GetDontDestroyOnLoadObjects()
+    {
+        GameObject temp = null;
+        try
+        {
+            temp = new GameObject();
+            DontDestroyOnLoad(temp);
+            Scene dontDestroyOnLoad = temp.scene;
+            DestroyImmediate(temp);
+            temp = null;
+
+            return dontDestroyOnLoad.GetRootGameObjects();
+        }
+        finally
+        {
+            if (temp != null)
+                DestroyImmediate(temp);
+        }
+    }
+    private void GameClear()
+    {
+        GameSave save=saveObject.GetComponent<GameSave>();
+        GameObject[] doNotDestroyOnLoad = GetDontDestroyOnLoadObjects();
+
+        GameObject keep = null;
+        foreach (GameObject g in doNotDestroyOnLoad)
+        {
+            if (g.tag == "keepObjectOnLoad")
+            {
+                keep = g;
+
+            }
+
+        }
+
+        GameObject currentPlayer = keep.GetComponent<KeepObjectOnLoad>().getObjectByTag("player");
+        newUnlock = "";
+        foreach (GameObject skill in currentPlayer.GetComponent<PlayerMovement>().currentSkillsValueInstance)
+        {
+            string name = skill.GetComponent<PlayerSkill>().nameOfSkill;
+            if (!save.unlockedSkills.Contains(name))
+            {
+                newUnlock = "you can carry the skill "+name+" to your next game";
+                save.unlockedSkills.Add(name);
+                break;
+            }
+        }
+
+        keep.GetComponent<KeepObjectOnLoad>().unactiveObject();
+
+        SceneManager.LoadScene(clearScene);
 
 
     }

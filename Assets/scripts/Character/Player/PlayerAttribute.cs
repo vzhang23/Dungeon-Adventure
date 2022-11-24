@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PlayerAttribute : CommonAttribute
 {
-    private int[] expCurve = {0, 10, 40, 90, 150,220, 300, 450,600, 800, 1000, 1200, 1000000 };
+    private int[] expCurve = {0, 10, 40, 90, 150,220, 300, 450,600, 800, 1000, 1200, 1500, 1800, 2100, 2500, 3000, 3500, 4000, 5000, 1000000 };
     public List<GameObject> skillsToLearn;
     public int[] learnLevel = { 2, 4, 7, 10};
     public float hpMultiplier = 1.2f;

@@ -309,6 +309,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 782462559159129283, guid: 0d80ffdc5b1d17a4e81ae553ef62c49b, type: 3}
+      propertyPath: totalHealth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 782462559159129283, guid: 0d80ffdc5b1d17a4e81ae553ef62c49b, type: 3}
+      propertyPath: maximumDamageTakenPercentage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5874213143254659502, guid: 0d80ffdc5b1d17a4e81ae553ef62c49b, type: 3}
       propertyPath: m_Name
       value: boss
@@ -841,6 +849,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7656665320342163599, guid: 0912a22e17859c94caf14af75b8be57a, type: 3}
+      propertyPath: keep
+      value: 
+      objectReference: {fileID: 2107550925}
+    - target: {fileID: 7656665320342163599, guid: 0912a22e17859c94caf14af75b8be57a, type: 3}
       propertyPath: armorUI
       value: 
       objectReference: {fileID: 161245197}
@@ -1295,7 +1307,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.017857, y: 1}
+    m_SensorSize: {x: 2.010959, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1572,7 +1584,7 @@ GameObject:
   - component: {fileID: 2107550925}
   m_Layer: 0
   m_Name: DoNotDestroyOnLoad
-  m_TagString: Untagged
+  m_TagString: keepObjectOnLoad
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1627,6 +1639,10 @@ PrefabInstance:
       propertyPath: attack
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 6532899708885022202, guid: 4f42cd8f2d7fb924f96fe683f97382d2, type: 3}
+      propertyPath: weapon.Array.data[1]
+      value: 
+      objectReference: {fileID: 7732845678848063090, guid: 250a177efee7128408bddb48c37fbd62, type: 3}
     - target: {fileID: 6532899708885022202, guid: 4f42cd8f2d7fb924f96fe683f97382d2, type: 3}
       propertyPath: skillsToLearn.Array.size
       value: 5

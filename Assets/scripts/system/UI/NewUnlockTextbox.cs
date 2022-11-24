@@ -1,14 +1,17 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
-public class Gatekeeper : MonoBehaviour
+public class NewUnlockTextbox : MonoBehaviour
 {
-    public GameObject gate;
     // Start is called before the first frame update
     void Start()
     {
+        TextMeshProUGUI textBox = gameObject.GetComponentInChildren<TextMeshProUGUI>();
+
+  
+        textBox.SetText(GameManager.Instance().getNewUnlockText());
         
     }
 
@@ -16,14 +19,5 @@ public class Gatekeeper : MonoBehaviour
     void Update()
     {
         
-    }
-    private void OnDestroy()
-    {
-        try
-        {
-            GameManager.Instance().activeTeleporter(gate);
-        }
-        catch (Exception) { 
-        }
     }
 }

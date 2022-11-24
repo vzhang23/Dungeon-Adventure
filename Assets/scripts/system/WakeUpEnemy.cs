@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,9 +19,14 @@ public class WakeUpEnemy : MonoBehaviour
     }
     private void OnDestroy()
     {
-        foreach(GameObject enemy in enemyList)
+        try
         {
-            enemy.GetComponent<EnemyController>().sleepIndicator.SetActive(false);
+            foreach (GameObject enemy in enemyList)
+            {
+                enemy.GetComponent<EnemyController>().sleepIndicator.SetActive(false);
+            }
         }
+        catch (Exception) { }
+
     }
 }
