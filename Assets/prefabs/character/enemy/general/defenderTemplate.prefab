@@ -460,12 +460,14 @@ MonoBehaviour:
   exp: 15
   cooldown: 1
   recovery: 1
-  weapon: {fileID: 7454046939453712068, guid: 9debfbfe8e954ad4aaf323fa961140b7, type: 3}
+  weapon:
+  - {fileID: 7454046939453712068, guid: 9debfbfe8e954ad4aaf323fa961140b7, type: 3}
   waitBeforeAttack: 0.5
   superArmor: 15
   beenHitCooldown: 0.2
   dropEquipmentChance: 0.2
   attackChance: 0.7
+  maximumDamageTakenPercentage: 1
 --- !u!95 &846060624550427748
 Animator:
   serializedVersion: 4
@@ -802,19 +804,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5172587564236930118, guid: a8cce9495fa22e44da6b0c2d2400fd31, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5510364
+      value: 4.2645116
       objectReference: {fileID: 0}
     - target: {fileID: 5172587564236930118, guid: a8cce9495fa22e44da6b0c2d2400fd31, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.5325084
+      value: 3.0352113
       objectReference: {fileID: 0}
     - target: {fileID: 5172587564236930118, guid: a8cce9495fa22e44da6b0c2d2400fd31, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.04
+      value: 1.552
       objectReference: {fileID: 0}
     - target: {fileID: 5172587564236930118, guid: a8cce9495fa22e44da6b0c2d2400fd31, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.04
+      value: 0.3714
       objectReference: {fileID: 0}
     - target: {fileID: 5172587564236930118, guid: a8cce9495fa22e44da6b0c2d2400fd31, type: 3}
       propertyPath: m_LocalPosition.z

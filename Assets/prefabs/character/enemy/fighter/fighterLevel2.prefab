@@ -21,7 +21,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4427188138723350642, guid: f64ec1eacd77df34abbdfb1b936b6a38, type: 3}
       propertyPath: attack
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4427188138723350642, guid: f64ec1eacd77df34abbdfb1b936b6a38, type: 3}
       propertyPath: moveSpeed
@@ -29,7 +29,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4427188138723350642, guid: f64ec1eacd77df34abbdfb1b936b6a38, type: 3}
       propertyPath: totalHealth
-      value: 140
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 4427188138723350642, guid: f64ec1eacd77df34abbdfb1b936b6a38, type: 3}
       propertyPath: waitBeforeAttack
@@ -37,6 +37,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4427188138723350642, guid: f64ec1eacd77df34abbdfb1b936b6a38, type: 3}
       propertyPath: dropEquipmentChance
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4427188138723350642, guid: f64ec1eacd77df34abbdfb1b936b6a38, type: 3}
+      propertyPath: maximumDamageTakenPercentage
       value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 4427188138723350643, guid: f64ec1eacd77df34abbdfb1b936b6a38, type: 3}

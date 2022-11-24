@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public GameObject ending;
     public GameObject gameTextbox;
     public GameObject pauseMenu;
-    private static int stageNumber=1;
+    public int stageNumber=1;
     public static GameManager instance = null;
     public GameObject armorUI;
     void Awake()
@@ -30,6 +30,10 @@ public class GameManager : MonoBehaviour
     public void pause()
     {
         pauseMenu.SetActive(true);
+    }
+    public int getStage()
+    {
+        return stageNumber;
     }
     public void resume()
     {
@@ -66,16 +70,26 @@ public class GameManager : MonoBehaviour
     }
     public void ReturnToMenu()
     {
+        Destroy(GameObject.FindGameObjectWithTag("player"));
         SceneManager.LoadScene(menuScene);
     }
 
     public IEnumerator NextStage() {
-        stageNumber++;
-        GameObject currentPlayer = GameObject.FindGameObjectsWithTag("player")[0];
-        currentPlayer.transform.position = new Vector2(-3, 3);
+
         yield return new WaitForSeconds(0.2f);
-        SceneManager.LoadScene(gameScene+ stageNumber);
-        Init();
+
+        if (stageNumber == 3)
+        {
+            ReturnToMenu();
+        }
+        else {
+            stageNumber++;
+            GameObject currentPlayer = GameObject.FindGameObjectsWithTag("player")[0];
+            currentPlayer.transform.position = new Vector2(-3, 3);
+            SceneManager.LoadScene(gameScene + stageNumber);
+            Init();
+        }
+
 
     }
 

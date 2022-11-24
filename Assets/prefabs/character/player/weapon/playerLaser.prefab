@@ -98,10 +98,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 867eb3e772bf1154aa82e6c7f2b80d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackMultiplier: 1
+  attackMultiplier: 0.5
   duration: 2
   coolDown: 1
-  recoveryTime: 0
+  recoveryTime: 0.5
   attactOffset: {x: 0, y: 0}
   speed: {x: 10, y: 0}
   followPlayer: 0
@@ -111,7 +111,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   attackPower: 0
-  waitBeforeAttack: 0.1
+  waitBeforeAttack: 0.2
   dealDamageTimes: 3
 --- !u!61 &3017177650306663132
 BoxCollider2D:

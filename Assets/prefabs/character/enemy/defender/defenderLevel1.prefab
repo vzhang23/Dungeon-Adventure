@@ -15,6 +15,10 @@ PrefabInstance:
       propertyPath: waitBeforeAttack
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4985355143592187330, guid: 2826be7ed9d394847b2ad23d8d7aa8c0, type: 3}
+      propertyPath: maximumDamageTakenPercentage
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 4985355143592187331, guid: 2826be7ed9d394847b2ad23d8d7aa8c0, type: 3}
       propertyPath: m_Name
       value: defenderLevel1

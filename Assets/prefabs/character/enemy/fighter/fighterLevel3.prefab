@@ -89,7 +89,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6367157505258609559, guid: fbb9e0e1b6a6622419c29e99eabb9896, type: 3}
       propertyPath: defense
-      value: 40
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6367157505258609559, guid: fbb9e0e1b6a6622419c29e99eabb9896, type: 3}
       propertyPath: recovery
@@ -97,7 +97,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6367157505258609559, guid: fbb9e0e1b6a6622419c29e99eabb9896, type: 3}
       propertyPath: moveSpeed
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6367157505258609559, guid: fbb9e0e1b6a6622419c29e99eabb9896, type: 3}
       propertyPath: superArmor
@@ -105,7 +105,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6367157505258609559, guid: fbb9e0e1b6a6622419c29e99eabb9896, type: 3}
       propertyPath: totalHealth
-      value: 200
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 6367157505258609559, guid: fbb9e0e1b6a6622419c29e99eabb9896, type: 3}
       propertyPath: attackChance
@@ -118,6 +118,10 @@ PrefabInstance:
     - target: {fileID: 6367157505258609559, guid: fbb9e0e1b6a6622419c29e99eabb9896, type: 3}
       propertyPath: dropEquipmentChance
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6367157505258609559, guid: fbb9e0e1b6a6622419c29e99eabb9896, type: 3}
+      propertyPath: maximumDamageTakenPercentage
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbb9e0e1b6a6622419c29e99eabb9896, type: 3}

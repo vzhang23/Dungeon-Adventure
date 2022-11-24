@@ -11,6 +11,14 @@ PrefabInstance:
       propertyPath: m_text
       value: fighter-1
       objectReference: {fileID: 0}
+    - target: {fileID: 3051435798866590948, guid: 021126011b93e954493bc7ba12f7abf0, type: 3}
+      propertyPath: m_margin.x
+      value: -1.324031
+      objectReference: {fileID: 0}
+    - target: {fileID: 3051435798866590948, guid: 021126011b93e954493bc7ba12f7abf0, type: 3}
+      propertyPath: m_margin.z
+      value: -0.8018745
+      objectReference: {fileID: 0}
     - target: {fileID: 4923278194490198537, guid: 021126011b93e954493bc7ba12f7abf0, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -20,12 +28,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5952269085499952242, guid: 021126011b93e954493bc7ba12f7abf0, type: 3}
+      propertyPath: attack
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5952269085499952242, guid: 021126011b93e954493bc7ba12f7abf0, type: 3}
       propertyPath: superArmor
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5952269085499952242, guid: 021126011b93e954493bc7ba12f7abf0, type: 3}
       propertyPath: waitBeforeAttack
       value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5952269085499952242, guid: 021126011b93e954493bc7ba12f7abf0, type: 3}
+      propertyPath: maximumDamageTakenPercentage
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 5952269085499952243, guid: 021126011b93e954493bc7ba12f7abf0, type: 3}
       propertyPath: m_Name

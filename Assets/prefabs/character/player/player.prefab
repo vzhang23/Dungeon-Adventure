@@ -929,6 +929,9 @@ MonoBehaviour:
   skillsToLearn:
   - {fileID: 740464103836226376, guid: 880165bf6191c4f4eb6fc95ad212c286, type: 3}
   - {fileID: 7904444672605418479, guid: 5e480fb34bea6bb4dba33c266a5e7cc9, type: 3}
+  - {fileID: 6335512270371463784, guid: 097afa0565d9ba8439e3431327a94220, type: 3}
+  - {fileID: 740464103836226376, guid: eb5ce38eb80bdac409264ed45b27ed79, type: 3}
+  - {fileID: 4394807073652453445, guid: 93bf85869abeb8942be778b9684c493b, type: 3}
   learnLevel: 0200000004000000070000000a0000000d000000
   hpMultiplier: 1.2
   mpMultiplier: 1.2
@@ -965,12 +968,10 @@ MonoBehaviour:
   faceingDirection: 1
   jumpForce: 6
   rb: {fileID: 0}
-  currentSkillsValue:
-  - {fileID: 740464103836226376, guid: eb5ce38eb80bdac409264ed45b27ed79, type: 3}
-  - {fileID: 6335512270371463784, guid: 097afa0565d9ba8439e3431327a94220, type: 3}
+  currentSkillsValue: []
   currentSkillsValueInstance: []
-  currentSkillsKey: 6b00000062000000
-  availableSkillsKey: 68000000690000006f0000006c00000079000000
+  currentSkillsKey: 
+  availableSkillsKey: 6b000000690000006f0000006c00000068000000
   inActionUntil: 0
   beenHitCooldown: 0.5
   status: 

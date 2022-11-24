@@ -1,0 +1,107 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &235371479080674471
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 169757312438987304, guid: e84c217872d4ca743991c36be4f59792, type: 3}
+      propertyPath: m_Name
+      value: assassinLevel3
+      objectReference: {fileID: 0}
+    - target: {fileID: 169757312438987305, guid: e84c217872d4ca743991c36be4f59792, type: 3}
+      propertyPath: exp
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 169757312438987305, guid: e84c217872d4ca743991c36be4f59792, type: 3}
+      propertyPath: attack
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 169757312438987305, guid: e84c217872d4ca743991c36be4f59792, type: 3}
+      propertyPath: defense
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 169757312438987305, guid: e84c217872d4ca743991c36be4f59792, type: 3}
+      propertyPath: moveSpeed
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 169757312438987305, guid: e84c217872d4ca743991c36be4f59792, type: 3}
+      propertyPath: totalHealth
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 169757312438987305, guid: e84c217872d4ca743991c36be4f59792, type: 3}
+      propertyPath: waitBeforeAttack
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 169757312438987305, guid: e84c217872d4ca743991c36be4f59792, type: 3}
+      propertyPath: weapon.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 169757312438987305, guid: e84c217872d4ca743991c36be4f59792, type: 3}
+      propertyPath: dropEquipmentChance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 169757312438987305, guid: e84c217872d4ca743991c36be4f59792, type: 3}
+      propertyPath: weapon.Array.data[1]
+      value: 
+      objectReference: {fileID: 7732845678848063090, guid: 7e0a1958032ddf54682562a6bab43f3f, type: 3}
+    - target: {fileID: 169757312438987305, guid: e84c217872d4ca743991c36be4f59792, type: 3}
+      propertyPath: maximumDamageTakenPercentage
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 169757312438987310, guid: e84c217872d4ca743991c36be4f59792, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 169757312438987310, guid: e84c217872d4ca743991c36be4f59792, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.886
+      objectReference: {fileID: 0}
+    - target: {fileID: 169757312438987310, guid: e84c217872d4ca743991c36be4f59792, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.965
+      objectReference: {fileID: 0}
+    - target: {fileID: 169757312438987310, guid: e84c217872d4ca743991c36be4f59792, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 169757312438987310, guid: e84c217872d4ca743991c36be4f59792, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 169757312438987310, guid: e84c217872d4ca743991c36be4f59792, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 169757312438987310, guid: e84c217872d4ca743991c36be4f59792, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 169757312438987310, guid: e84c217872d4ca743991c36be4f59792, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 169757312438987310, guid: e84c217872d4ca743991c36be4f59792, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 169757312438987310, guid: e84c217872d4ca743991c36be4f59792, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 169757312438987310, guid: e84c217872d4ca743991c36be4f59792, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1482620223125400658, guid: e84c217872d4ca743991c36be4f59792, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8834176682700741311, guid: e84c217872d4ca743991c36be4f59792, type: 3}
+      propertyPath: m_text
+      value: assassin-3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e84c217872d4ca743991c36be4f59792, type: 3}

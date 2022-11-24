@@ -44,7 +44,10 @@ public class EnemyController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         currentMovementSpeed = enemyAttribute.moveSpeed * UnityEngine.Random.Range(0.2f, 0.5f);
-
+        if (GameManager.Instance().getStage() == 3)
+        {
+            sleepIndicator.SetActive(false);
+        }
 
     }
 
@@ -148,6 +151,7 @@ public class EnemyController : MonoBehaviour
     }
     public IEnumerator releaseAttack(Vector2 position)
     {
+        enemyAttribute.pickWeapon();
         if (cooldownFinish <= Time.time)
         {
             attackIndicator.SetActive(true);
@@ -155,10 +159,10 @@ public class EnemyController : MonoBehaviour
             cooldownFinish = Time.time + enemyAttribute.cooldown;
             inActionUntil = Time.time + enemyAttribute.recovery;
             yield return new WaitForSeconds(enemyAttribute.waitBeforeAttack);
-            currentAttack= Instantiate(enemyAttribute.weapon, position, enemyAttribute.weapon.transform.rotation);
+            currentAttack= Instantiate(enemyAttribute.getWeapon(), position, enemyAttribute.getWeapon().transform.rotation);
             currentAttack.GetComponent<EnemyWeapon>().parent = gameObject;
 
-            if (!enemyAttribute.weapon.GetComponent<EnemyWeapon>().follow)
+            if (!enemyAttribute.getWeapon().GetComponent<EnemyWeapon>().follow)
             {
                 currentAttack = null;
             }
@@ -208,6 +212,12 @@ public class EnemyController : MonoBehaviour
 
     public void receiveDamage(float value, float attackPower, int direction, Vector2 force, float hitRecovery)
     {
+        float damage = value * value / enemyAttribute.defense;
+        if (damage >= enemyAttribute.totalHealth * enemyAttribute.maximumDamageTakenPercentage)
+        {
+            damage = enemyAttribute.totalHealth * enemyAttribute.maximumDamageTakenPercentage;
+        }
+        print(value);
         if (lastBeenHit + enemyAttribute.beenHitCooldown >= Time.time)
         {
             return;
@@ -225,7 +235,7 @@ public class EnemyController : MonoBehaviour
             }
             catch (Exception) { }
         }
-        float newHealth = enemyAttribute.hp - value*value/ enemyAttribute.defense;
+        float newHealth = enemyAttribute.hp - damage;
         if (newHealth <= 0)
         {
             newHealth = 0;

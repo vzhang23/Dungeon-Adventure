@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3553487207837680105, guid: 5b641fc8e75fad844839521425da9bb4, type: 3}
       propertyPath: chance.Array.size
-      value: 9
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3553487207837680105, guid: 5b641fc8e75fad844839521425da9bb4, type: 3}
       propertyPath: chance.Array.data[0]
@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3553487207837680105, guid: 5b641fc8e75fad844839521425da9bb4, type: 3}
       propertyPath: enemyList.Array.size
-      value: 9
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3553487207837680105, guid: 5b641fc8e75fad844839521425da9bb4, type: 3}
       propertyPath: enemyList.Array.data[0]
