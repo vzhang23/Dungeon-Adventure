@@ -44,8 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6bbf3dfbc8e64c429cac2f18c67cb41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 1
-  cooldown: 5
   lastUsed: 0
   healAmount: 20
-  mp: 20
+  <cooldown>k__BackingField: 1
+  <duration>k__BackingField: 0.5
+  <mp>k__BackingField: 20
+  <nameOfSkill>k__BackingField: heal
+  <description>k__BackingField: consume mp to heal character's health

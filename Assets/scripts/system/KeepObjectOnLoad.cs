@@ -7,7 +7,8 @@ public class KeepObjectOnLoad : MonoBehaviour
     public List<GameObject> objectToKeep;
     void Start()
     {
-       foreach(GameObject i in objectToKeep)
+        DontDestroyOnLoad(gameObject);
+        foreach (GameObject i in objectToKeep)
         {
             DontDestroyOnLoad(i);
         } 
@@ -17,5 +18,12 @@ public class KeepObjectOnLoad : MonoBehaviour
     void Update()
     {
         
+    }
+    private void OnDestroy()
+    {
+        foreach (GameObject i in objectToKeep)
+        {
+            Destroy(i);
+        }
     }
 }

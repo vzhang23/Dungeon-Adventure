@@ -124,6 +124,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afc9032d7c790c841904602920f04624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 30
+  damage: 0.3
   force: {x: 15, y: 15}
   hitRecovery: 0.2

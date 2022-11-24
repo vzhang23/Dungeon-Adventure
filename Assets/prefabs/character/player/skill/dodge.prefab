@@ -44,7 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7556ef4e10eed5144802b3d84166e535, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 0.1
-  cooldown: 0.5
   lastUsed: 0
   forceMultiplier: 40
+  <cooldown>k__BackingField: 0.5
+  <duration>k__BackingField: 0.1
+  <mp>k__BackingField: 0
+  <nameOfSkill>k__BackingField: dodge
+  <description>k__BackingField: move forward for a short amount of distance
