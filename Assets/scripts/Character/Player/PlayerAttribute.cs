@@ -7,7 +7,7 @@ using UnityEngine;
 public class PlayerAttribute : CommonAttribute
 {
     private int[] expCurve = {0, 10, 40, 90, 150,220, 300, 450,600, 800, 1000, 1200, 1000000 };
-    public GameObject[] skillsToLearn;
+    public List<GameObject> skillsToLearn;
     public int[] learnLevel = { 2, 4, 7, 10};
     public float hpMultiplier = 1.2f;
     public float mpMultiplier = 1.2f;
@@ -67,11 +67,13 @@ public class PlayerAttribute : CommonAttribute
         foreach (int i in learnLevel) {
             if (i == level)
             {
-                int e = UnityEngine.Random.Range(0, skillsToLearn.Length);
+                int e = UnityEngine.Random.Range(0, skillsToLearn.Count);
                 gameObject.GetComponent<PlayerMovement>().learnSkill(skillsToLearn[e]);
+                skillsToLearn.RemoveAt(e);
             }
         
         }
+        addExp(0);
     }
     internal void addExp(int exp)
     {

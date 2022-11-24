@@ -132,7 +132,7 @@ public class PlayerMovement : MonoBehaviour
     internal void learnSkill(GameObject gameObject)
     {
         KeyCode k = availableSkillsKey[0];
-        availableSkillsKey.Remove(0);
+        availableSkillsKey.RemoveAt(0);
         currentSkillsKey.Add(k);
         GameObject skillInst=Instantiate(gameObject, transform.position, gameObject.transform.rotation);
         skillInst.transform.parent = transform;
@@ -201,6 +201,7 @@ public class PlayerMovement : MonoBehaviour
         if (groundObjects == (groundObjects | (1 << other.gameObject.layer)))
         {
             isGrounded = true;
+            changeVelocity(0, 0);
         }
         groundType = other.gameObject.tag;
     }
@@ -235,11 +236,14 @@ public class PlayerMovement : MonoBehaviour
             GameManager.Instance().hideArmorUI();
         }
     }
-    IEnumerator releaseAttack(Vector2 position, GameObject weaponObject)
+    public IEnumerator releaseAttack(Vector2 position, GameObject weaponObject)
     {
         if (cooldownFinish <= Time.time)
         {
-            changeVelocity(0, 0); 
+            if (isGrounded)
+            {
+                changeVelocity(0, 0);
+            }
             PlayerWeapon weapon = weaponObject.GetComponent<PlayerWeapon>();
 
             cooldownFinish = Time.time + weapon.coolDown;
@@ -265,10 +269,13 @@ public class PlayerMovement : MonoBehaviour
     {
         if (status == "block")
         {
-            cooldownFinish = 0;
-            Vector2 attackPosition = gameObject.transform.position;
-            attackPosition.x = attackPosition.x + 0.5f;
-            StartCoroutine(releaseAttack(attackPosition, playerAttribute.getBlockAttack()));
+            if (playerAttribute.getBlockAttack() != null) {
+
+                cooldownFinish = 0;
+                Vector2 attackPosition = gameObject.transform.position;
+                attackPosition.x = attackPosition.x + 0.5f;
+                StartCoroutine(releaseAttack(attackPosition, playerAttribute.getBlockAttack()));
+            }
             return;
         }
 

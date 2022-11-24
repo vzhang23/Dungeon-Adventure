@@ -90,7 +90,6 @@ public class EnemyWeapon : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        print("!!");
         try
         {
             if (collision.gameObject.tag == "player" && currentDealDamageTimes<=dealDamageTimes && lastDealDamage+dealDamageCooldown<=Time.time)

@@ -99,6 +99,10 @@ PrefabInstance:
       propertyPath: dropEquipmentChance
       value: 0.9
       objectReference: {fileID: 0}
+    - target: {fileID: 5532614674600049830, guid: f67a174279a5ff040be6b9df1c5f77ce, type: 3}
+      propertyPath: maximumDamageTakenPercentage
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 5532614674600049831, guid: f67a174279a5ff040be6b9df1c5f77ce, type: 3}
       propertyPath: m_Name
       value: defenderLevel3

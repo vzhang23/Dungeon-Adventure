@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class EnemyHitRange : MonoBehaviour
 {
-    public Vector2 offset;
+    private Vector2 offset;
     // Start is called before the first frame update
     void Start()
     {
-        
+        offset = transform.localPosition;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector2 newPosition = new Vector2(transform.parent.position.x+offset.x* transform.parent.GetComponent<EnemyController>().facingDirection, transform.parent.position.y+ offset.y);
-        gameObject.transform.position = newPosition;
+        Vector2 newPosition = new Vector2(offset.x* transform.parent.GetComponent<EnemyController>().facingDirection,  offset.y);
+        gameObject.transform.localPosition = newPosition;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

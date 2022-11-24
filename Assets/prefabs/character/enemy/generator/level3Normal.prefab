@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3553487207837680105, guid: 5b641fc8e75fad844839521425da9bb4, type: 3}
       propertyPath: chance.Array.size
-      value: 9
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3553487207837680105, guid: 5b641fc8e75fad844839521425da9bb4, type: 3}
       propertyPath: chance.Array.data[0]
@@ -52,8 +52,20 @@ PrefabInstance:
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3553487207837680105, guid: 5b641fc8e75fad844839521425da9bb4, type: 3}
+      propertyPath: chance.Array.data[9]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3553487207837680105, guid: 5b641fc8e75fad844839521425da9bb4, type: 3}
       propertyPath: enemyList.Array.size
-      value: 9
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3553487207837680105, guid: 5b641fc8e75fad844839521425da9bb4, type: 3}
+      propertyPath: chance.Array.data[10]
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3553487207837680105, guid: 5b641fc8e75fad844839521425da9bb4, type: 3}
+      propertyPath: chance.Array.data[11]
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3553487207837680105, guid: 5b641fc8e75fad844839521425da9bb4, type: 3}
       propertyPath: enemyList.Array.data[0]
@@ -91,6 +103,18 @@ PrefabInstance:
       propertyPath: enemyList.Array.data[8]
       value: 
       objectReference: {fileID: 5109787131874812268, guid: 4cdc73f7e4ef5104d8b21b880b22a393, type: 3}
+    - target: {fileID: 3553487207837680105, guid: 5b641fc8e75fad844839521425da9bb4, type: 3}
+      propertyPath: enemyList.Array.data[9]
+      value: 
+      objectReference: {fileID: 126237006960170175, guid: 7ee30509d278a1b408a1942eedcb93e4, type: 3}
+    - target: {fileID: 3553487207837680105, guid: 5b641fc8e75fad844839521425da9bb4, type: 3}
+      propertyPath: enemyList.Array.data[10]
+      value: 
+      objectReference: {fileID: 2003897807856656742, guid: 9514f28c6f89e5041a8e8ef3d92ac714, type: 3}
+    - target: {fileID: 3553487207837680105, guid: 5b641fc8e75fad844839521425da9bb4, type: 3}
+      propertyPath: enemyList.Array.data[11]
+      value: 
+      objectReference: {fileID: 80832232242007695, guid: 40e689e53e8593e46904658f7976d3e6, type: 3}
     - target: {fileID: 8715518625170376055, guid: 5b641fc8e75fad844839521425da9bb4, type: 3}
       propertyPath: m_RootOrder
       value: 0

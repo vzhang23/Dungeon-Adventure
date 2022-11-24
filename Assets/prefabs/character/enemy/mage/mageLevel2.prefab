@@ -28,6 +28,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4273615853152650116, guid: 6d917d6b0ddd54848946647118ec3e69, type: 3}
     - target: {fileID: 5465015742926279465, guid: a182e64dfc2daad45af964c72b9fa801, type: 3}
+      propertyPath: defense
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465015742926279465, guid: a182e64dfc2daad45af964c72b9fa801, type: 3}
       propertyPath: cooldown
       value: 4
       objectReference: {fileID: 0}
@@ -41,7 +45,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5465015742926279465, guid: a182e64dfc2daad45af964c72b9fa801, type: 3}
       propertyPath: totalHealth
-      value: 100
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 5465015742926279465, guid: a182e64dfc2daad45af964c72b9fa801, type: 3}
       propertyPath: attackChance
@@ -52,7 +56,19 @@ PrefabInstance:
       value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 5465015742926279465, guid: a182e64dfc2daad45af964c72b9fa801, type: 3}
+      propertyPath: weapon.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465015742926279465, guid: a182e64dfc2daad45af964c72b9fa801, type: 3}
       propertyPath: dropEquipmentChance
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465015742926279465, guid: a182e64dfc2daad45af964c72b9fa801, type: 3}
+      propertyPath: weapon.Array.data[1]
+      value: 
+      objectReference: {fileID: 4273615853152650116, guid: 6d917d6b0ddd54848946647118ec3e69, type: 3}
+    - target: {fileID: 5465015742926279465, guid: a182e64dfc2daad45af964c72b9fa801, type: 3}
+      propertyPath: maximumDamageTakenPercentage
       value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 5465015742926279466, guid: a182e64dfc2daad45af964c72b9fa801, type: 3}
@@ -69,11 +85,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5465015742926279470, guid: a182e64dfc2daad45af964c72b9fa801, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 5465015742926279470, guid: a182e64dfc2daad45af964c72b9fa801, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 5465015742926279470, guid: a182e64dfc2daad45af964c72b9fa801, type: 3}
       propertyPath: m_LocalPosition.x
@@ -116,12 +132,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5465015744690658006, guid: a182e64dfc2daad45af964c72b9fa801, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 17.790419
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465015744690658006, guid: a182e64dfc2daad45af964c72b9fa801, type: 3}
       propertyPath: m_LocalScale.y
       value: 2.5040233
       objectReference: {fileID: 0}
     - target: {fileID: 5465015744690658006, guid: a182e64dfc2daad45af964c72b9fa801, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.01
+      value: 8.0616
       objectReference: {fileID: 0}
     - target: {fileID: 5465015744690658006, guid: a182e64dfc2daad45af964c72b9fa801, type: 3}
       propertyPath: m_LocalPosition.y
