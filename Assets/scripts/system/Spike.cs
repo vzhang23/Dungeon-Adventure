@@ -29,7 +29,7 @@ public class Spike : MonoBehaviour
             {
                 newForce = new Vector2(-force.x, force.y);
             }
-            cs.receiveDamage(damage, 1, newForce, hitRecovery);
+            cs.receiveRealPercentageDamage(damage, 1, newForce, hitRecovery);
         }
     }
 }

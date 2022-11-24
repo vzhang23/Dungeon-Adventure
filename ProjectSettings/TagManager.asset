@@ -16,6 +16,9 @@ TagManager:
   - armor
   - enemy
   - attackIndicator
+  - pauseMenu
+  - keepObjectOnLoad
+  - canvas
   layers:
   - Default
   - TransparentFX

@@ -44,7 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72eaa9fae9ddeed41806c5bdb90a914f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 0.2
-  cooldown: 1
   lastUsed: 0
   blockAttack: {fileID: 7732845678848063090, guid: 3b9f955b5c67f2c4da7a56f9dcfab0e0, type: 3}
+  <cooldown>k__BackingField: 1
+  <duration>k__BackingField: 0.2
+  <mp>k__BackingField: 0
+  <nameOfSkill>k__BackingField: block
+  <description>k__BackingField: ignor damage for a short amount of time, been attack
+    while skill is active will release a powerful attack

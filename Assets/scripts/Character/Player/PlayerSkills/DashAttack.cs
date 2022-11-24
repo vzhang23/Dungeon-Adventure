@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class DashAttack : MonoBehaviour, PlayerSkill
 {
-    public float duration;
-    public float cooldown;
     public float lastUsed;
     public float forceMultiplier;
-    public float mp;
+    [field: SerializeField] public float cooldown { get; set; }
+    [field: SerializeField] public float duration { get; set; }
+    [field: SerializeField] public float mp { get; set; }
+
+    [field: SerializeField] public string nameOfSkill { get; set; }
+    [field: SerializeField] public string description { get; set; }
+
     public void useSkill(GameObject player)
     {
         PlayerMovement playerMovement = player.GetComponent<PlayerMovement>();

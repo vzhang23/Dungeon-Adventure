@@ -4,17 +4,22 @@ using UnityEngine;
 
 public class Dodge : MonoBehaviour, PlayerSkill
 {
-    public float duration;
-    public float cooldown;
     public float lastUsed;
     public float forceMultiplier;
+    [field: SerializeField] public float cooldown { get; set; }
+    [field: SerializeField] public float duration { get; set; }
+    [field: SerializeField] public float mp { get; set; }
+    [field: SerializeField] public string nameOfSkill { get; set; }
+    [field: SerializeField] public string description { get; set; }
 
     public void useSkill(GameObject player)
     {
-        if (lastUsed + cooldown <= Time.time) {
+
+        PlayerMovement playerMovement = player.GetComponent<PlayerMovement>();
+        PlayerAttribute playerAttribute = player.GetComponent<PlayerAttribute>();
+        if (playerAttribute.mp >= mp && lastUsed + cooldown <= Time.time) {
+            playerAttribute.mp -= mp;
             lastUsed = Time.time;
-            PlayerMovement playerMovement = player.GetComponent<PlayerMovement>();
-            PlayerAttribute playerAttribute = player.GetComponent<PlayerAttribute>();
             playerMovement.changeVelocity(forceMultiplier * playerAttribute.moveSpeed * playerMovement.faceingDirection * duration, playerMovement.getVelocity().y);
             playerMovement.inActionUntil = Time.time + duration;
         }

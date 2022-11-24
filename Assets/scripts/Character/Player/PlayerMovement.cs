@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isJumping;
     private int currentJump;
     private bool isGrounded;
-    private Dictionary<string, PlayerArmor> currentArmorParts;
+    public Dictionary<string, PlayerArmor> currentArmorParts;
     public List<GameObject> currentSkillsValue;
     public List<GameObject> currentSkillsValueInstance;
     public List<KeyCode> currentSkillsKey;
@@ -52,7 +52,12 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time < inActionUntil)
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            GameManager.Instance().pauseOrResumeGame();
+        }
+
+        if (Time.time < inActionUntil || GameManager.Instance().getPauseState())
         {
             return;
         }
@@ -98,8 +103,6 @@ public class PlayerMovement : MonoBehaviour
             if (newArmorPart!=null)
             {
                 string partOfArmor = newArmorPart.GetComponent<PlayerArmor>().partOfArmor;
-                print(partOfArmor);
-                print(currentArmorParts);
                 if (currentArmorParts.ContainsKey(partOfArmor))
                 {
                     removeArmor(currentArmorParts[partOfArmor]);
@@ -108,9 +111,12 @@ public class PlayerMovement : MonoBehaviour
                 wearArmor(newArmorPart.GetComponent<PlayerArmor>());
                 Destroy(newArmorPart);
             }
-            Vector2 attackPosition = gameObject.transform.position;
-            attackPosition.x = attackPosition.x + 0.5f;
-            StartCoroutine(releaseAttack(attackPosition, playerAttribute.weapon[0]));
+            else
+            {
+                Vector2 attackPosition = gameObject.transform.position;
+                attackPosition.x = attackPosition.x + 0.5f;
+                StartCoroutine(releaseAttack(attackPosition, playerAttribute.weapon[0]));
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.U))
@@ -264,6 +270,39 @@ public class PlayerMovement : MonoBehaviour
     {
         playerAttribute.wearArmor(newArmor);
         currentArmorParts.Add(newArmor.partOfArmor, newArmor);
+    }
+    public void receiveRealPercentageDamage(float value, int direction, Vector2 force, float hitRecovery)
+    {
+        if (status == "block")
+        {
+            if (playerAttribute.getBlockAttack() != null)
+            {
+
+                cooldownFinish = 0;
+                Vector2 attackPosition = gameObject.transform.position;
+                attackPosition.x = attackPosition.x + 0.5f;
+                StartCoroutine(releaseAttack(attackPosition, playerAttribute.getBlockAttack()));
+            }
+            return;
+        }
+
+
+
+        if (lastBeenHit + beenHitCooldown >= Time.time)
+        {
+            return;
+        }
+        StopAllCoroutines();
+        playerAttribute.hp -= value*playerAttribute.totalHealth;
+        if (hitRecovery != 0)
+        {
+
+            inActionUntil = hitRecovery + Time.time;
+            changeVelocity(force.x * direction, force.y);
+            StartCoroutine(ResetForce(hitRecovery));
+        }
+
+        lastBeenHit = Time.time;
     }
     public void receiveDamage(float value, int direction, Vector2 force, float hitRecovery)
     {

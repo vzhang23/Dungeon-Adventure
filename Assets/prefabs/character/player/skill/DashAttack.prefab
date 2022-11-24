@@ -44,7 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b0b2bb5f6a42ef41a22362f105948c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 0.3
-  cooldown: 1
+  lastUsed: 0
   forceMultiplier: 15
-  mp: 20
+  <cooldown>k__BackingField: 1
+  <duration>k__BackingField: 0.2
+  <mp>k__BackingField: 40
+  <nameOfSkill>k__BackingField: dash attack
+  <description>k__BackingField: consume mp to attack while dashing forward

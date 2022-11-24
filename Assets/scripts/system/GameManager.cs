@@ -10,35 +10,30 @@ public class GameManager : MonoBehaviour
 {
     private string gameScene = "Stage";
     private string menuScene = "MenuScene";
-    public GameObject ending;
-    public GameObject gameTextbox;
-    public GameObject pauseMenu;
-    public int stageNumber=1;
+    public static int stageNumber=1;
     public static GameManager instance = null;
     public GameObject armorUI;
+    public GameObject pauseMenu;
+    public static bool pause;
     void Awake()
     {
+        pause = false;
         instance = this;
-
-
+            
     }
     public static GameManager Instance()
     {
         return instance;
     }
 
-    public void pause()
-    {
-        pauseMenu.SetActive(true);
-    }
+
     public int getStage()
     {
         return stageNumber;
     }
-    public void resume()
+    public bool getPauseState()
     {
-        pauseMenu.SetActive(false);
-        Cursor.lockState = CursorLockMode.Locked;
+        return pause;
     }
     public void Init()
     {
@@ -70,7 +65,14 @@ public class GameManager : MonoBehaviour
     }
     public void ReturnToMenu()
     {
-        Destroy(GameObject.FindGameObjectWithTag("player"));
+        Destroy(GameObject.FindGameObjectWithTag("keepObjectOnLoad"));
+        foreach(GameObject g in GameObject.FindObjectsOfType<GameObject>())
+        {
+            if (g.tag != "GameManager")
+            {
+                g.SetActive(false);
+            }
+        }
         SceneManager.LoadScene(menuScene);
     }
 
@@ -119,6 +121,24 @@ public class GameManager : MonoBehaviour
     public void hideArmorUI()
     {
         armorUI.SetActive(false);
+    }
+
+    public void pauseOrResumeGame()
+    {
+        if (pauseMenu.activeSelf)
+        {
+            pause = false;
+            Time.timeScale = 1;
+
+        pauseMenu.SetActive(false);
+        }
+        else
+        {
+            pause = true;
+            Time.timeScale = 0;
+            pauseMenu.SetActive(true);
+        }
+
     }
 
 

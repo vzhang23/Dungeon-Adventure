@@ -44,7 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b5f471c48a58b94fac1796a7bd4d704, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 1
-  cooldown: 2
   lastUsed: 0
   upperCut: {fileID: 7732845678848063090, guid: 60ed65c34abab9d4ab0325dda65c9472, type: 3}
+  <cooldown>k__BackingField: 2
+  <duration>k__BackingField: 1.5
+  <mp>k__BackingField: 0
+  <nameOfSkill>k__BackingField: upper cut
+  <description>k__BackingField: release a special attack that can launch enemy uppword
