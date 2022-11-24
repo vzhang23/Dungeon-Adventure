@@ -1,11 +1,10 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gatekeeper : MonoBehaviour
+public class GameSave : MonoBehaviour
 {
-    public GameObject gate;
+    public List<string> unlockedSkills;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,14 +15,5 @@ public class Gatekeeper : MonoBehaviour
     void Update()
     {
         
-    }
-    private void OnDestroy()
-    {
-        try
-        {
-            GameManager.Instance().activeTeleporter(gate);
-        }
-        catch (Exception) { 
-        }
     }
 }

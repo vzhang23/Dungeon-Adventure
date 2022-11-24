@@ -463,6 +463,7 @@ GameObject:
   - component: {fileID: 799522196}
   - component: {fileID: 799522195}
   - component: {fileID: 799522194}
+  - component: {fileID: 799522197}
   m_Layer: 5
   m_Name: SkillDropdown
   m_TagString: Untagged
@@ -585,6 +586,18 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_AlphaFadeSpeed: 0.15
+--- !u!114 &799522197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 799522191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f5f7a679ea1c484091667e584b53aa3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &998889555
 GameObject:
   m_ObjectHideFlags: 0
@@ -1044,6 +1057,7 @@ GameObject:
   - component: {fileID: 1694274364}
   - component: {fileID: 1694274363}
   - component: {fileID: 1694274362}
+  - component: {fileID: 1694274365}
   m_Layer: 5
   m_Name: SkillText
   m_TagString: Untagged
@@ -1068,8 +1082,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -317.3, y: 141}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -300.22122, y: 141}
+  m_SizeDelta: {x: 439.7026, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1694274363
 CanvasRenderer:
@@ -1126,8 +1140,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1162,12 +1176,25 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 1.3376465, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1694274365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694274361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a08c3768eda8f141b98fb027334678d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillDropdown: {fileID: 799522191}
 --- !u!1 &1707278139
 GameObject:
   m_ObjectHideFlags: 0
@@ -1379,8 +1406,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   armorUI: {fileID: 871153117}
   pauseMenu: {fileID: 866417032}
-  armorText: {fileID: 2061775965}
-  skillText: {fileID: 1694274361}
+  saveObject: {fileID: 5209464293352170386, guid: f6633e9b1df4e124b8493302a6ad3921, type: 3}
 --- !u!1001 &6420761163463732131
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1396,21 +1422,33 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 7656665320342163599}
+    - target: {fileID: 6420761161778685651, guid: 0a0fec4a94d515c4fa9ab4fdcd27ae51, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: pauseOrResumeGame
+      objectReference: {fileID: 0}
     - target: {fileID: 6420761161939361788, guid: 0a0fec4a94d515c4fa9ab4fdcd27ae51, type: 3}
       propertyPath: m_fontSize
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6420761161939361788, guid: 0a0fec4a94d515c4fa9ab4fdcd27ae51, type: 3}
+      propertyPath: m_margin.x
+      value: -1.3376465
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420761161939361788, guid: 0a0fec4a94d515c4fa9ab4fdcd27ae51, type: 3}
       propertyPath: m_margin.z
-      value: -186.87256
+      value: 0.3840332
       objectReference: {fileID: 0}
     - target: {fileID: 6420761161939361788, guid: 0a0fec4a94d515c4fa9ab4fdcd27ae51, type: 3}
       propertyPath: m_fontSizeBase
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6420761161939361789, guid: 0a0fec4a94d515c4fa9ab4fdcd27ae51, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 504.9608
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420761161939361789, guid: 0a0fec4a94d515c4fa9ab4fdcd27ae51, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 310
+      value: 358.15173
       objectReference: {fileID: 0}
     - target: {fileID: 6420761161939361789, guid: 0a0fec4a94d515c4fa9ab4fdcd27ae51, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1515,6 +1553,10 @@ PrefabInstance:
     - target: {fileID: 6420761163337826297, guid: 0a0fec4a94d515c4fa9ab4fdcd27ae51, type: 3}
       propertyPath: m_Name
       value: SkillTitle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420761163341944374, guid: 0a0fec4a94d515c4fa9ab4fdcd27ae51, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 391
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a0fec4a94d515c4fa9ab4fdcd27ae51, type: 3}

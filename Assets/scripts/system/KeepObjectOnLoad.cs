@@ -26,4 +26,33 @@ public class KeepObjectOnLoad : MonoBehaviour
             Destroy(i);
         }
     }
+    public void activeObject()
+    {
+
+        foreach (GameObject i in objectToKeep)
+        {
+            i.SetActive(true);
+        }
+    }
+
+    public void unactiveObject()
+    {
+
+        foreach (GameObject i in objectToKeep)
+        {
+            i.SetActive(false);
+        }
+    }
+    public GameObject getObjectByTag(string tag)
+    {
+
+        foreach (GameObject i in objectToKeep)
+        {
+            if (i.tag == tag)
+            {
+                return i;
+            }
+        }
+        return null;
+    }
 }

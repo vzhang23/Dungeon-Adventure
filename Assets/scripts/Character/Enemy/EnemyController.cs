@@ -65,7 +65,7 @@ public class EnemyController : MonoBehaviour
                 return;
             }
             float distance = gameObject.transform.position.x - player.gameObject.transform.position.x;
-            if (!isActive && (sleepIndicator.activeSelf==false && distance <= 5 ) || enemyAttribute.hp!=enemyAttribute.totalHealth )
+            if (!isActive && (sleepIndicator.activeSelf==false && distance <= 10 ) || enemyAttribute.hp!=enemyAttribute.totalHealth )
             {
                 rb.constraints &= ~RigidbodyConstraints2D.FreezePositionX;
                 isActive = true;
@@ -217,7 +217,6 @@ public class EnemyController : MonoBehaviour
         {
             damage = enemyAttribute.totalHealth * enemyAttribute.maximumDamageTakenPercentage;
         }
-        print(value);
         if (lastBeenHit + enemyAttribute.beenHitCooldown >= Time.time)
         {
             return;

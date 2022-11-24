@@ -57,7 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5465015742926279465, guid: a182e64dfc2daad45af964c72b9fa801, type: 3}
       propertyPath: moveSpeed
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5465015742926279465, guid: a182e64dfc2daad45af964c72b9fa801, type: 3}
       propertyPath: superArmor
@@ -73,7 +73,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5465015742926279465, guid: a182e64dfc2daad45af964c72b9fa801, type: 3}
       propertyPath: waitBeforeAttack
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5465015742926279465, guid: a182e64dfc2daad45af964c72b9fa801, type: 3}
       propertyPath: weapon.Array.size

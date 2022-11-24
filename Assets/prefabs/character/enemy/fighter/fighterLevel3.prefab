@@ -15,6 +15,10 @@ PrefabInstance:
       propertyPath: m_text
       value: fighter-3
       objectReference: {fileID: 0}
+    - target: {fileID: 2405291293966607423, guid: fbb9e0e1b6a6622419c29e99eabb9896, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3483656911631490062, guid: fbb9e0e1b6a6622419c29e99eabb9896, type: 3}
       propertyPath: m_LocalPosition.y
       value: 1.29

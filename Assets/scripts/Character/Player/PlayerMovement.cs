@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -29,6 +30,8 @@ public class PlayerMovement : MonoBehaviour
     public float beenHitCooldown;
     public string status;
     public string groundType;
+    private List<GameObject> learningNewSkill;
+    public GameObject textboxUI;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         currentJump = 0;
         faceingDirection = 1;
+        learningNewSkill = new List<GameObject>();
     }
 
     // Update is called once per frame
@@ -133,16 +137,41 @@ public class PlayerMovement : MonoBehaviour
                 currentSkillsValueInstance[i].GetComponent<PlayerSkill>().useSkill(gameObject);
             }
         }
+        if (learningNewSkill.Count != 0)
+        {
+            TextMeshPro textBox = textboxUI.GetComponentInChildren<TextMeshPro>();
+            string newText = "Press a key in range [";
+            foreach(KeyCode key in availableSkillsKey)
+            {
+                newText += key.ToString()+" , ";
+            }
+            newText = newText.Substring(0, newText.Length-2);
+            newText += "] to learn the skill [";
+            newText += learningNewSkill[0].GetComponent<PlayerSkill>().nameOfSkill+"]";
+
+
+            textBox.SetText(newText);
+
+            for (int i = 0; i < availableSkillsKey.Count; i++)
+            {
+                if (Input.GetKeyDown(availableSkillsKey[i]))
+                {
+                    KeyCode k = availableSkillsKey[i];
+                    availableSkillsKey.RemoveAt(i);
+                    currentSkillsKey.Add(k);
+                    currentSkillsValueInstance.Add(learningNewSkill[0]);
+                    learningNewSkill.RemoveAt(0);
+                    textBox.SetText("");
+                }
+            }
+        }
     }
 
     internal void learnSkill(GameObject gameObject)
     {
-        KeyCode k = availableSkillsKey[0];
-        availableSkillsKey.RemoveAt(0);
-        currentSkillsKey.Add(k);
         GameObject skillInst=Instantiate(gameObject, transform.position, gameObject.transform.rotation);
         skillInst.transform.parent = transform;
-        currentSkillsValueInstance.Add(skillInst);
+        learningNewSkill.Add(skillInst);
     }
 
     public void changeVelocity(float x, float y)
