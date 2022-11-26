@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance = null;
     public GameObject armorUI;
     public GameObject pauseMenu;
+    public GameObject deathMenu;
     public static bool pause;
     public GameObject saveObject;
     private static string newUnlock;
@@ -155,6 +156,10 @@ public class GameManager : MonoBehaviour
             if (temp != null)
                 DestroyImmediate(temp);
         }
+    }
+    public void gameOver()
+    {
+        deathMenu.SetActive(true);
     }
     public void setSkillChoosed(string newSkillChoosed)
     {
