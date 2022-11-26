@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public int customStageNumber;
     private string gameScene = "Stage";
     private string menuScene = "MenuScene";
     private string clearScene = "ClearScene";
@@ -19,10 +20,15 @@ public class GameManager : MonoBehaviour
     public GameObject pauseMenu;
     public static bool pause;
     public GameObject saveObject;
-    private string newUnlock;
+    private static string newUnlock;
     GameObject teleporter;
+    private static string skillChoosed;
     void Awake()
     {
+        if(stageNumber>0 && stageNumber<= customStageNumber)
+        {
+            stageNumber = customStageNumber;
+        }
         pause = false;
         instance = this;
         teleporter = null;
@@ -75,7 +81,6 @@ public class GameManager : MonoBehaviour
 
     public void StartingGame()
     {
-
         SceneManager.LoadScene(gameScene+ stageNumber);
         Init();
     }
@@ -88,6 +93,8 @@ public class GameManager : MonoBehaviour
     public void ReturnToMenu()
     {
 
+        EditorUtility.SetDirty(saveObject);
+        AssetDatabase.SaveAssets();
         Time.timeScale = 1;
         GameObject keep=GameObject.FindGameObjectWithTag("keepObjectOnLoad");
         keep.SetActive(true);
@@ -98,6 +105,9 @@ public class GameManager : MonoBehaviour
 
     public void InfinityLevel()
     {
+
+        EditorUtility.SetDirty(saveObject);
+        AssetDatabase.SaveAssets();
         KeepObjectOnLoad keep = GameObject.FindGameObjectWithTag("keepObjectOnLoad").GetComponent<KeepObjectOnLoad>();
         keep.activeObject();
         stageNumber = -1;
@@ -146,6 +156,14 @@ public class GameManager : MonoBehaviour
                 DestroyImmediate(temp);
         }
     }
+    public void setSkillChoosed(string newSkillChoosed)
+    {
+        skillChoosed = newSkillChoosed;
+    }
+    public string getSkillChoosed()
+    {
+        return skillChoosed;
+    }
     private void GameClear()
     {
         GameSave save=saveObject.GetComponent<GameSave>();
@@ -174,7 +192,6 @@ public class GameManager : MonoBehaviour
                 break;
             }
         }
-
         keep.GetComponent<KeepObjectOnLoad>().unactiveObject();
 
         SceneManager.LoadScene(clearScene);

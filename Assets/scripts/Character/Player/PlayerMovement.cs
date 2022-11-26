@@ -18,7 +18,6 @@ public class PlayerMovement : MonoBehaviour
     private int currentJump;
     private bool isGrounded;
     public Dictionary<string, PlayerArmor> currentArmorParts;
-    public List<GameObject> currentSkillsValue;
     public List<GameObject> currentSkillsValueInstance;
     public List<KeyCode> currentSkillsKey;
 
@@ -35,12 +34,9 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for(int i = 0; i < currentSkillsValue.Count; i++)
-        {
-            GameObject skillInst = Instantiate(currentSkillsValue[i], transform.position, currentSkillsValue[i].transform.rotation);
-            skillInst.transform.parent = gameObject.transform;
-            currentSkillsValueInstance.Add(skillInst);
-        }
+        print(GameManager.Instance().getSkillChoosed());
+        
+
         status = "";
         cooldownFinish = 0;
         inActionUntil = 0;
@@ -49,9 +45,20 @@ public class PlayerMovement : MonoBehaviour
         isJumping = false;
         rb = GetComponent<Rigidbody2D>();
         currentJump = 0;
-        faceingDirection = 1;
+        faceingDirection = 1; 
+        rb = GetComponent<Rigidbody2D>();
         learningNewSkill = new List<GameObject>();
+        foreach (GameObject o in playerAttribute.skillsToLearn)
+        {
+            print(o.GetComponent<PlayerSkill>().nameOfSkill);
+            if (o.GetComponent<PlayerSkill>().nameOfSkill == GameManager.Instance().getSkillChoosed())
+            {
+                print("learned");
+                learnSkill(o);
+            }
+        }
     }
+
 
     // Update is called once per frame
     void Update()
@@ -171,7 +178,9 @@ public class PlayerMovement : MonoBehaviour
     {
         GameObject skillInst=Instantiate(gameObject, transform.position, gameObject.transform.rotation);
         skillInst.transform.parent = transform;
+
         learningNewSkill.Add(skillInst);
+        playerAttribute.skillsToLearn.Remove(gameObject);
     }
 
     public void changeVelocity(float x, float y)

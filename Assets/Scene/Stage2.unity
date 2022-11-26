@@ -661,6 +661,10 @@ PrefabInstance:
       propertyPath: playerLevelUI
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7656665320342163599, guid: 0912a22e17859c94caf14af75b8be57a, type: 3}
+      propertyPath: customStageNumber
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0912a22e17859c94caf14af75b8be57a, type: 3}
 --- !u!1 &1977728191
