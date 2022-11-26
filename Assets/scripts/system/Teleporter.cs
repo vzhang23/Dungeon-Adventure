@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Teleporter : MonoBehaviour
 {
-
+    private bool used;
     void Start()
     {
+        used = false;
     }
 
     // Update is called once per frame
@@ -16,9 +17,10 @@ public class Teleporter : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag=="player") {
+        if (collision.gameObject.tag=="player" && !used) {
             GameManager gameManager = GameManager.Instance();
             gameManager.NextStage();
+            used = true;
         }
     }
 }

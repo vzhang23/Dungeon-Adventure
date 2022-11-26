@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class LoadPlayerArmorDropdownInfo : MonoBehaviour
 {
+    TMP_Dropdown dropDown;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +24,7 @@ public class LoadPlayerArmorDropdownInfo : MonoBehaviour
             listOfArmor.Add(player.currentArmorParts[key].partOfArmor);
         }
 
-        TMP_Dropdown dropDown = transform.GetComponent<TMP_Dropdown>();
+        dropDown = transform.GetComponent<TMP_Dropdown>();
 
         dropDown.ClearOptions();
         dropDown.AddOptions(listOfArmor);
@@ -32,6 +33,5 @@ public class LoadPlayerArmorDropdownInfo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 }

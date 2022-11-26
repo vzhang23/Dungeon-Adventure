@@ -512,6 +512,10 @@ PrefabInstance:
       propertyPath: keep
       value: 
       objectReference: {fileID: 2107550925}
+    - target: {fileID: 7656665320342163599, guid: 0912a22e17859c94caf14af75b8be57a, type: 3}
+      propertyPath: customStageNumber
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0912a22e17859c94caf14af75b8be57a, type: 3}
 --- !u!1 &1161246633
@@ -683,7 +687,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0150893, y: 1}
+    m_SensorSize: {x: 2.834889, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
