@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EXPBar : MonoBehaviour
+public class PlayerEXPBar : MonoBehaviour
 {
     Vector3 localScale;
-    GameObject parent;
+    GameObject player;
     private float max_scale;
     // Start is called before the first frame update
     void Start()
     {
-        parent = gameObject.transform.parent.gameObject.transform.parent.gameObject;
+        player = GameObject.FindGameObjectWithTag("player");
         localScale = transform.localScale;
         max_scale = localScale.x;
     }
@@ -25,7 +25,7 @@ public class EXPBar : MonoBehaviour
     {
         
 
-        PlayerAttribute attribute = parent.GetComponent<PlayerAttribute>();
+        PlayerAttribute attribute = player.GetComponent<PlayerAttribute>();
         float scale;
         if (attribute.level == 20)
         {

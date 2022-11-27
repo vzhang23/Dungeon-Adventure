@@ -311,7 +311,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 782462559159129283, guid: 0d80ffdc5b1d17a4e81ae553ef62c49b, type: 3}
       propertyPath: totalHealth
-      value: 1
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 782462559159129283, guid: 0d80ffdc5b1d17a4e81ae553ef62c49b, type: 3}
       propertyPath: maximumDamageTakenPercentage
@@ -1295,7 +1295,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.834889, y: 1}
+    m_SensorSize: {x: 2.5834727, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

@@ -102,7 +102,7 @@ MonoBehaviour:
   attackMultiplier: 1.2
   duration: 5
   attactOffset: {x: 0.8, y: 0}
-  speed: {x: 2, y: 2}
+  speed: {x: 4, y: 2}
   follow: 0
   parent: {fileID: 0}
   dealDamageTimes: 1
