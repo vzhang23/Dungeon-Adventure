@@ -69,7 +69,6 @@ public class PlayerAttribute : CommonAttribute
             {
                 int e = UnityEngine.Random.Range(0, skillsToLearn.Count);
                 gameObject.GetComponent<PlayerMovement>().learnSkill(skillsToLearn[e]);
-                skillsToLearn.RemoveAt(e);
             }
         
         }

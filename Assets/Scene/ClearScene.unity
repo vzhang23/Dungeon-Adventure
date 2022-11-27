@@ -1325,10 +1325,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
-    - target: {fileID: 7656665320342163597, guid: 0912a22e17859c94caf14af75b8be57a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7656665320342163598, guid: 0912a22e17859c94caf14af75b8be57a, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1373,14 +1369,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7656665320342163599, guid: 0912a22e17859c94caf14af75b8be57a, type: 3}
-      propertyPath: armorUI
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7656665320342163599, guid: 0912a22e17859c94caf14af75b8be57a, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0912a22e17859c94caf14af75b8be57a, type: 3}
 --- !u!114 &7656665320190247465 stripped
@@ -1389,7 +1377,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 7656665320190247464}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cfde59d13fa5f0e4494d6e31b6a3d65a, type: 3}
   m_Name: 

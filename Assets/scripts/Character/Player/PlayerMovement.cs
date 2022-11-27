@@ -13,15 +13,15 @@ public class PlayerMovement : MonoBehaviour
     public int faceingDirection;
     public float jumpForce;
     public Rigidbody2D rb;
+    public bool dead;
     private float moveDirection;
     private bool isJumping;
     private int currentJump;
     private bool isGrounded;
     public Dictionary<string, PlayerArmor> currentArmorParts;
-    public List<GameObject> currentSkillsValue;
     public List<GameObject> currentSkillsValueInstance;
     public List<KeyCode> currentSkillsKey;
-
+    private Animator animator;
     public List<KeyCode> availableSkillsKey;
     private GameObject newArmorPart;
     public float inActionUntil;
@@ -35,12 +35,10 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for(int i = 0; i < currentSkillsValue.Count; i++)
-        {
-            GameObject skillInst = Instantiate(currentSkillsValue[i], transform.position, currentSkillsValue[i].transform.rotation);
-            skillInst.transform.parent = gameObject.transform;
-            currentSkillsValueInstance.Add(skillInst);
-        }
+        dead = false;
+        print(GameManager.Instance().getSkillChoosed());
+        animator = gameObject.GetComponent<Animator>();
+
         status = "";
         cooldownFinish = 0;
         inActionUntil = 0;
@@ -49,13 +47,28 @@ public class PlayerMovement : MonoBehaviour
         isJumping = false;
         rb = GetComponent<Rigidbody2D>();
         currentJump = 0;
-        faceingDirection = 1;
+        faceingDirection = 1; 
+        rb = GetComponent<Rigidbody2D>();
         learningNewSkill = new List<GameObject>();
+        foreach (GameObject o in playerAttribute.skillsToLearn)
+        {
+            print(o.GetComponent<PlayerSkill>().nameOfSkill);
+            if (o.GetComponent<PlayerSkill>().nameOfSkill == GameManager.Instance().getSkillChoosed())
+            {
+                print("learned");
+                learnSkill(o);
+            }
+        }
     }
+
 
     // Update is called once per frame
     void Update()
     {
+        if (dead)
+        {
+            return;
+        }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             GameManager.Instance().pauseOrResumeGame();
@@ -71,9 +84,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (dead)
+        {
+            playerAttribute.hp = 0;
+            return;
+        }
         if (playerAttribute.hp <= 0)
         {
-            Destroy(gameObject);
+            dead = true;
+            StartCoroutine(playDeathAnimation());
+            return;
         }
         if (!isGrounded)
         {
@@ -81,7 +101,16 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Time.time < inActionUntil)
         {
+            animator.SetInteger("speedInt", 0);
             return;
+        }
+        if (moveDirection != 0)
+        {
+            animator.SetInteger("speedInt", 1);
+        }
+        else
+        {
+            animator.SetInteger("speedInt", 0);
         }
         if (groundType == "fireGround")
         {
@@ -89,16 +118,25 @@ public class PlayerMovement : MonoBehaviour
         }
         Move();
     }
-
+    private IEnumerator playDeathAnimation()
+    {
+        animator.SetBool("Death", true);
+        yield return new WaitForSeconds(1);
+        GameManager.Instance().gameOver();
+    }
     private void ProcessInput()
     {
 
         status = "";
         moveDirection = Input.GetAxis("Horizontal");
+
+
         if (Input.GetKeyDown(KeyCode.W) && currentJump < playerAttribute.jumpLimit)
         {
             isJumping = true;
             isGrounded = false;
+
+            animator.SetTrigger("Jump");
             currentJump++;
         }
 
@@ -171,7 +209,9 @@ public class PlayerMovement : MonoBehaviour
     {
         GameObject skillInst=Instantiate(gameObject, transform.position, gameObject.transform.rotation);
         skillInst.transform.parent = transform;
+
         learningNewSkill.Add(skillInst);
+        playerAttribute.skillsToLearn.Remove(gameObject);
     }
 
     public void changeVelocity(float x, float y)
@@ -202,6 +242,12 @@ public class PlayerMovement : MonoBehaviour
 
         return rb.velocity;
     }
+    public void swapScale(int positive)
+    {
+        transform.localScale = new Vector3(positive*Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        textboxUI.transform.localScale= new Vector3(positive * Mathf.Abs(textboxUI.transform.localScale.x), textboxUI.transform.localScale.y, textboxUI.transform.localScale.z);
+        playerAttribute.levelUI.transform.localScale = new Vector3(positive * Mathf.Abs(playerAttribute.levelUI.transform.localScale.x), playerAttribute.levelUI.transform.localScale.y, playerAttribute.levelUI.transform.localScale.z);
+    }
     private void Move()
     {
         if (isGrounded)
@@ -218,10 +264,12 @@ public class PlayerMovement : MonoBehaviour
         if(moveDirection<0 && faceingDirection != -1)
         {
             faceingDirection = -1;
+            swapScale(-1);
         }
         else if(moveDirection > 0 && faceingDirection != 1)
         {
             faceingDirection = 1;
+            swapScale(1);
         }
 
         if (isJumping)
@@ -235,6 +283,7 @@ public class PlayerMovement : MonoBehaviour
      {
         if (groundObjects == (groundObjects | (1 << other.gameObject.layer)))
         {
+            animator.ResetTrigger("Jump");
             isGrounded = true;
             changeVelocity(0, 0);
         }
@@ -302,6 +351,10 @@ public class PlayerMovement : MonoBehaviour
     }
     public void receiveRealPercentageDamage(float value, int direction, Vector2 force, float hitRecovery)
     {
+        if (dead)
+        {
+            return;
+        }
         if (status == "block")
         {
             if (playerAttribute.getBlockAttack() != null)
@@ -335,6 +388,10 @@ public class PlayerMovement : MonoBehaviour
     }
     public void receiveDamage(float value, int direction, Vector2 force, float hitRecovery)
     {
+        if (dead)
+        {
+            return;
+        }
         if (status == "block")
         {
             if (playerAttribute.getBlockAttack() != null) {
