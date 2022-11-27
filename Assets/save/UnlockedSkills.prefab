@@ -46,3 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlockedSkills:
   - dash attack
+  - block
