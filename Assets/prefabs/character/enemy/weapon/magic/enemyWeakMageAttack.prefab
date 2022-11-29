@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 845762093895546023}
   - component: {fileID: 8773385646778988330}
   - component: {fileID: 500432812228183600}
+  - component: {fileID: 4840893850262604124}
   m_Layer: 0
   m_Name: enemyWeakMageAttack
   m_TagString: Untagged
@@ -27,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4273615853152650116}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.391, y: 2.1132, z: 0}
-  m_LocalScale: {x: 3.4454415, y: 0.8296477, z: 1}
+  m_LocalPosition: {x: -5.0395, y: 2.2779, z: 0}
+  m_LocalScale: {x: 0.63660765, y: 0.6753287, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 598300dc5b3abee48950ff62965c3ba6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6dfa7c5a645d55d42b4048414c501717, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,18 +100,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0008643642, y: 0}
+  m_Offset: {x: 0.0286178, y: -0.0023588538}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 0.37}
+    oldSize: {x: 0.64, y: 0.627}
     newSize: {x: 0.32, y: 0.37}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.32000017, y: 0.37}
+  m_Size: {x: 0.5165442, y: 0.61062384}
   m_EdgeRadius: 0
 --- !u!114 &500432812228183600
 MonoBehaviour:
@@ -135,3 +136,19 @@ MonoBehaviour:
   force: {x: 10, y: 10}
   hitRecovery: 0.1
   targetPlayer: 0
+--- !u!58 &4840893850262604124
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4273615853152650116}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.32
