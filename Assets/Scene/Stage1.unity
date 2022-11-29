@@ -628,6 +628,62 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 689949946, guid: 0912a22e17859c94caf14af75b8be57a, type: 3}
+      propertyPath: m_text
+      value: Resume
+      objectReference: {fileID: 0}
+    - target: {fileID: 866417032, guid: 0912a22e17859c94caf14af75b8be57a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 866417033, guid: 0912a22e17859c94caf14af75b8be57a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1102
+      objectReference: {fileID: 0}
+    - target: {fileID: 866417033, guid: 0912a22e17859c94caf14af75b8be57a, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 417.0163
+      objectReference: {fileID: 0}
+    - target: {fileID: 866417033, guid: 0912a22e17859c94caf14af75b8be57a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.00013733
+      objectReference: {fileID: 0}
+    - target: {fileID: 866417033, guid: 0912a22e17859c94caf14af75b8be57a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -344.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 866417034, guid: 0912a22e17859c94caf14af75b8be57a, type: 3}
+      propertyPath: m_Color.b
+      value: 0.21960786
+      objectReference: {fileID: 0}
+    - target: {fileID: 866417034, guid: 0912a22e17859c94caf14af75b8be57a, type: 3}
+      propertyPath: m_Color.g
+      value: 0.21960786
+      objectReference: {fileID: 0}
+    - target: {fileID: 866417034, guid: 0912a22e17859c94caf14af75b8be57a, type: 3}
+      propertyPath: m_Color.r
+      value: 0.21960786
+      objectReference: {fileID: 0}
+    - target: {fileID: 1659971976, guid: 0912a22e17859c94caf14af75b8be57a, type: 3}
+      propertyPath: m_text
+      value: Quit
+      objectReference: {fileID: 0}
+    - target: {fileID: 1687178575, guid: 0912a22e17859c94caf14af75b8be57a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -366.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1687178575, guid: 0912a22e17859c94caf14af75b8be57a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -360
+      objectReference: {fileID: 0}
+    - target: {fileID: 1838580553, guid: 0912a22e17859c94caf14af75b8be57a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 373
+      objectReference: {fileID: 0}
+    - target: {fileID: 1838580553, guid: 0912a22e17859c94caf14af75b8be57a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -372
+      objectReference: {fileID: 0}
     - target: {fileID: 7656665320342163597, guid: 0912a22e17859c94caf14af75b8be57a, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -850,7 +906,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.1233141, y: 1}
+    m_SensorSize: {x: 1.9927667, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

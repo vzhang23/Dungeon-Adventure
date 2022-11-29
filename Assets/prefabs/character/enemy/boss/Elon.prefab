@@ -35,6 +35,22 @@ PrefabInstance:
       propertyPath: m_margin.z
       value: -0.6274917
       objectReference: {fileID: 0}
+    - target: {fileID: 4882942537135666900, guid: a182e64dfc2daad45af964c72b9fa801, type: 3}
+      propertyPath: m_Size.x
+      value: 0.8658453
+      objectReference: {fileID: 0}
+    - target: {fileID: 4882942537135666900, guid: a182e64dfc2daad45af964c72b9fa801, type: 3}
+      propertyPath: m_Size.y
+      value: 4.1893034
+      objectReference: {fileID: 0}
+    - target: {fileID: 4882942537135666900, guid: a182e64dfc2daad45af964c72b9fa801, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.0018549562
+      objectReference: {fileID: 0}
+    - target: {fileID: 4882942537135666900, guid: a182e64dfc2daad45af964c72b9fa801, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.0000006231536
+      objectReference: {fileID: 0}
     - target: {fileID: 5465015742926279464, guid: a182e64dfc2daad45af964c72b9fa801, type: 3}
       propertyPath: m_Name
       value: Elon
@@ -123,6 +139,10 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 5465015742926279469, guid: a182e64dfc2daad45af964c72b9fa801, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6b3bd7c5b6bea474e8f441e4c180decc, type: 3}
     - target: {fileID: 5465015742926279470, guid: a182e64dfc2daad45af964c72b9fa801, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -133,7 +153,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5465015742926279470, guid: a182e64dfc2daad45af964c72b9fa801, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0.7652
       objectReference: {fileID: 0}
     - target: {fileID: 5465015742926279470, guid: a182e64dfc2daad45af964c72b9fa801, type: 3}
       propertyPath: m_LocalPosition.x
@@ -141,7 +161,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5465015742926279470, guid: a182e64dfc2daad45af964c72b9fa801, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.73
+      value: 5.2575
       objectReference: {fileID: 0}
     - target: {fileID: 5465015742926279470, guid: a182e64dfc2daad45af964c72b9fa801, type: 3}
       propertyPath: m_LocalPosition.z

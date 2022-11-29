@@ -230,6 +230,56 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 689949946, guid: 0912a22e17859c94caf14af75b8be57a, type: 3}
+      propertyPath: m_text
+      value: Resume
+      objectReference: {fileID: 0}
+    - target: {fileID: 776447517, guid: 0912a22e17859c94caf14af75b8be57a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 866417032, guid: 0912a22e17859c94caf14af75b8be57a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 866417033, guid: 0912a22e17859c94caf14af75b8be57a, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 380.8168
+      objectReference: {fileID: 0}
+    - target: {fileID: 866417033, guid: 0912a22e17859c94caf14af75b8be57a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -8
+      objectReference: {fileID: 0}
+    - target: {fileID: 866417033, guid: 0912a22e17859c94caf14af75b8be57a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -321.40955
+      objectReference: {fileID: 0}
+    - target: {fileID: 866417035, guid: 0912a22e17859c94caf14af75b8be57a, type: 3}
+      propertyPath: m_CullTransparentMesh
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1659971976, guid: 0912a22e17859c94caf14af75b8be57a, type: 3}
+      propertyPath: m_text
+      value: 'Quit
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1687178575, guid: 0912a22e17859c94caf14af75b8be57a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -359
+      objectReference: {fileID: 0}
+    - target: {fileID: 1687178575, guid: 0912a22e17859c94caf14af75b8be57a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -324
+      objectReference: {fileID: 0}
+    - target: {fileID: 1838580553, guid: 0912a22e17859c94caf14af75b8be57a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 333
+      objectReference: {fileID: 0}
+    - target: {fileID: 1838580553, guid: 0912a22e17859c94caf14af75b8be57a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -324
+      objectReference: {fileID: 0}
     - target: {fileID: 7656665320342163597, guid: 0912a22e17859c94caf14af75b8be57a, type: 3}
       propertyPath: m_Name
       value: GameManager
