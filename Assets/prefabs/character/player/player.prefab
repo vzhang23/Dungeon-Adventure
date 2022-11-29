@@ -541,6 +541,7 @@ GameObject:
   - component: {fileID: 6532899708885022202}
   - component: {fileID: 6532899708885022207}
   - component: {fileID: 5108554157931265525}
+  - component: {fileID: 6532899708885022203}
   m_Layer: 9
   m_Name: player
   m_TagString: player
@@ -557,7 +558,7 @@ Transform:
   m_GameObject: {fileID: 6532899709619789242}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.3463, y: -0.5316, z: 0}
-  m_LocalScale: {x: 0.7169217, y: 0.7222175, z: 0}
+  m_LocalScale: {x: 0.38148, y: 0.38148, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 414903970}
@@ -724,3 +725,23 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 3.19, y: 4.86}
   m_Direction: 0
+--- !u!95 &6532899708885022203
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6532899709619789242}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f9a005829fa25d14494cf3563d80d678, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

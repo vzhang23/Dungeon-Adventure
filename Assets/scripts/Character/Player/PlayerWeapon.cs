@@ -19,7 +19,8 @@ public class PlayerWeapon : MonoBehaviour
     public LayerMask enemyLayer;
     public int attackPower;
     public float waitBeforeAttack;
-
+    public float moveUp;
+    public float rotate;
 
     public int dealDamageTimes;
     private int currentDealDamageTimes;
@@ -45,6 +46,7 @@ public class PlayerWeapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         float timePassed = Time.time - startTime;
         if (followPlayer)
         {
@@ -57,13 +59,18 @@ public class PlayerWeapon : MonoBehaviour
             Vector2 currentOffset = new Vector2(startingPosition.x + timePassed * speed.x * direction, startingPosition.y + timePassed * speed.y);
             gameObject.transform.position = currentOffset;
         }
+        gameObject.transform.position = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + moveUp *(timePassed/duration));
+        gameObject.transform.rotation = Quaternion.Euler(gameObject.transform.rotation.x, gameObject.transform.rotation.y, gameObject.transform.rotation.z - rotate * (timePassed / duration) * direction);
+    
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
+        if (currentDealDamageTimes >= dealDamageTimes)
+        {
+            Destroy(gameObject);
+        }
         if (enemyLayer == (enemyLayer | (1 << collision.gameObject.layer)) && currentDealDamageTimes <= dealDamageTimes)
         {
-            currentDealDamageTimes++;
             PlayerAttribute player = mainPlayer.gameObject.GetComponent<PlayerAttribute>();
             float fixAttack = 1;
             if (groundType == "fireGround")
@@ -71,6 +78,10 @@ public class PlayerWeapon : MonoBehaviour
                 fixAttack = 1.3f;
             }
             collision.gameObject.GetComponent<EnemyController>().receiveDamage(player.attack * attackMultiplier* fixAttack, attackPower, direction, force, hitRecovery);
+            if (currentDealDamageTimes >= dealDamageTimes)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 

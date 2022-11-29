@@ -360,6 +360,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5032474210070172766}
     m_Modifications:
+    - target: {fileID: 4997863215254316683, guid: 6c7dbf7dbee210248b2b8d415e81ad1c, type: 3}
+      propertyPath: m_SpriteTilingProperty.drawMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8838861535483672211, guid: 6c7dbf7dbee210248b2b8d415e81ad1c, type: 3}
       propertyPath: m_RootOrder
       value: 2

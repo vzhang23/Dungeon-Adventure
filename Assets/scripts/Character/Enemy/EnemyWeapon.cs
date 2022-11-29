@@ -42,6 +42,10 @@ public class EnemyWeapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (currentDealDamageTimes == dealDamageTimes)
+        {
+            Destroy(gameObject);
+        }
         if (targetPlayer)
         {
             float newSpeedX = rb.velocity.x + speed.x * 0.01f * (transform.position.x <= player.transform.position.x ? 1 : -1);
@@ -90,6 +94,7 @@ public class EnemyWeapon : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
         try
         {
             if (collision.gameObject.tag == "player" && currentDealDamageTimes<=dealDamageTimes && lastDealDamage+dealDamageCooldown<=Time.time)
@@ -98,6 +103,10 @@ public class EnemyWeapon : MonoBehaviour
                 currentDealDamageTimes++;
                 EnemyAttribute ea = parent.GetComponent<EnemyAttribute>();
                 collision.gameObject.GetComponent<PlayerMovement>().receiveDamage(ea.attack * attackMultiplier, direction, force, hitRecovery);
+                if (currentDealDamageTimes >= dealDamageTimes)
+                {
+                    Destroy(gameObject);
+                }
             }
             }
         catch (System.Exception)
