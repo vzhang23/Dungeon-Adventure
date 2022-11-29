@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6722048861963856302}
-  - component: {fileID: 6603043352329912657}
-  - component: {fileID: 1415484093980253558}
-  - component: {fileID: 3017177650306663132}
+  - component: {fileID: 3136739172448355}
+  - component: {fileID: 9051894046179273403}
+  - component: {fileID: 380731918102150997}
   m_Layer: 0
   m_Name: playerSword
   m_TagString: Untagged
@@ -34,7 +34,62 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &6603043352329912657
+--- !u!114 &3136739172448355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7732845678848063090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 867eb3e772bf1154aa82e6c7f2b80d10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackMultiplier: 1.5
+  duration: 0.5
+  coolDown: 1
+  recoveryTime: 0.7
+  attactOffset: {x: 0.5, y: 0}
+  speed: {x: 0, y: 0}
+  followPlayer: 1
+  force: {x: 15, y: 15}
+  hitRecovery: 0.05
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  attackPower: 8
+  waitBeforeAttack: 0.4
+  moveUp: 0
+  rotate: 180
+  dealDamageTimes: 5
+--- !u!61 &9051894046179273403
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7732845678848063090}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0058686435, y: 0.40200976}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.49223003, y: 0.15423463}
+    oldSize: {x: 1.024, y: 1.024}
+    newSize: {x: 1.024, y: 1.024}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.4571792, y: 0.9281079}
+  m_EdgeRadius: 0
+--- !u!212 &380731918102150997
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -80,62 +135,9 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.32, y: 0.37}
+  m_Size: {x: 1.024, y: 1.024}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!114 &1415484093980253558
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7732845678848063090}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 867eb3e772bf1154aa82e6c7f2b80d10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackMultiplier: 1.5
-  duration: 0.2
-  coolDown: 1
-  recoveryTime: 0.7
-  attactOffset: {x: 0.5, y: 0}
-  speed: {x: 0, y: 0}
-  followPlayer: 1
-  force: {x: 15, y: 15}
-  hitRecovery: 0.05
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 1024
-  attackPower: 8
-  waitBeforeAttack: 0.4
-  dealDamageTimes: 5
---- !u!61 &3017177650306663132
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7732845678848063090}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.0052063614, y: 0.07934961}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.024, y: 1.024}
-    newSize: {x: 0.32, y: 0.37}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.9107628, y: 0.8231916}
-  m_EdgeRadius: 0
+  m_SpriteSortPoint: 1
