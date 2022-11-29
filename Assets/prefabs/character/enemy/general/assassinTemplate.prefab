@@ -311,8 +311,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2932238584587141808}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.043, y: 2.213, z: 0}
-  m_LocalScale: {x: 0.20451, y: 0.20451, z: 0.20451}
+  m_LocalPosition: {x: 0.04, y: 1.978, z: 0}
+  m_LocalScale: {x: 0.1279589, y: 0.119474, z: 0.20451}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 169757312438987310}
@@ -359,7 +359,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4f8d3afa1113add43b0dc8ecad38e30a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -715,12 +715,20 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2142666483108586136, guid: e9c32268002bf874cb246f219f67aeb0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.081292726
+      objectReference: {fileID: 0}
+    - target: {fileID: 2142666483108586136, guid: e9c32268002bf874cb246f219f67aeb0, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.06589312
+      objectReference: {fileID: 0}
+    - target: {fileID: 2142666483108586136, guid: e9c32268002bf874cb246f219f67aeb0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.031
+      value: 0.041
       objectReference: {fileID: 0}
     - target: {fileID: 2142666483108586136, guid: e9c32268002bf874cb246f219f67aeb0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.199
+      value: 1.923
       objectReference: {fileID: 0}
     - target: {fileID: 2142666483108586136, guid: e9c32268002bf874cb246f219f67aeb0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -762,6 +770,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8551172493925965709, guid: e9c32268002bf874cb246f219f67aeb0, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6b40ce96462026c4eb2702e4d35f62c6, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9c32268002bf874cb246f219f67aeb0, type: 3}
 --- !u!4 &567484716759803102 stripped
