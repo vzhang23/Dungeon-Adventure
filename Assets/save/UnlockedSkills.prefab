@@ -47,3 +47,4 @@ MonoBehaviour:
   unlockedSkills:
   - dash attack
   - block
+  - heal
