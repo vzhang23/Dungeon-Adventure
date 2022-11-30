@@ -160,7 +160,7 @@ public class PlayerMovement : MonoBehaviour
                 StartCoroutine(releaseAttack(attackPosition, playerAttribute.weapon[0]));
             }
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.RightShift))
         {
            
             Vector2 attackPosition = gameObject.transform.position;
