@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -28,9 +29,13 @@ public class ChooseSkill : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        try
+        {
 
+            GameManager.Instance().setSkillChoosed(dropDown.options[dropDown.value].text);
+        }
+        catch (Exception) { }
 
-        GameManager.Instance().setSkillChoosed(dropDown.options[dropDown.value].text);
 
 
     }

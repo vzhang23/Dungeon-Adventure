@@ -135,3 +135,5 @@ MonoBehaviour:
   force: {x: 15, y: 5}
   hitRecovery: 0.4
   targetPlayer: 0
+  moveUp: 0
+  rotate: 0

@@ -6,11 +6,12 @@ using UnityEngine;
 
 public class PlayerAttribute : CommonAttribute
 {
-    private int[] expCurve = {0, 10, 40, 90, 150,220, 300, 450,600, 800, 1000, 1200, 1500, 1800, 2100, 2500, 3000, 3500, 4000, 5000, 1000000 };
+    private int[] expCurve = {0, 10, 40, 90, 150,220, 300, 450,600, 800, 1000, 1200, 1500, 1800, 2100, 2500, 3000, 3500, 4000, 5000};
     public List<GameObject> skillsToLearn;
     public int[] learnLevel = { 2, 4, 7, 10};
-    public float hpMultiplier = 1.2f;
-    public float mpMultiplier = 1.2f;
+    private float hpMultiplier;
+    private float mpMultiplier;
+    private float defenseMultiplier;
     public float totalMP;
     public float mp;
     public int level;
@@ -22,6 +23,9 @@ public class PlayerAttribute : CommonAttribute
     public GameObject levelUI;
     void Start()
     {
+        hpMultiplier = 1.2f;
+        mpMultiplier = 1.2f;
+        defenseMultiplier = 1.05f;
         mp = totalMP;
         hp = totalHealth;
     }
@@ -56,10 +60,12 @@ public class PlayerAttribute : CommonAttribute
     }
     public void levelUp()
     {
+        print(defenseMultiplier);
         totalHealth *= hpMultiplier;
         totalMP *= mpMultiplier;
         hp = totalHealth;
         mp = totalMP;
+        defense *= defenseMultiplier;
 
         TextMeshPro textBox = levelUI.GetComponentInChildren<TextMeshPro>();
         string newText = string.Format("level-" + level);
@@ -77,16 +83,25 @@ public class PlayerAttribute : CommonAttribute
     internal void addExp(int exp)
     {
         this.exp += exp;
-
-        if (this.exp >= expCurve[level])
+        if (level >= 20) {
+            if (this.exp >= expCurve[19]*Mathf.Pow(1.5f, level-19))
+            {
+                level++;
+                levelUp();
+            }
+        }else if (this.exp >= expCurve[level])
         {
             level++;
             levelUp();
         }
     }
-    public int[] getExpCurve()
+    public int getExpCurve(int i)
     {
-        return expCurve;
+        if (i >= 20)
+        {
+            return (int)(expCurve[19] * Mathf.Pow(1.5f, i - 19));
+        }
+        return expCurve[i];
     }
     public void setBlockAttack(GameObject blockAttack)
     {

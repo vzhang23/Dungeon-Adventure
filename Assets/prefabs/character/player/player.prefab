@@ -665,8 +665,6 @@ MonoBehaviour:
   - {fileID: 740464103836226376, guid: eb5ce38eb80bdac409264ed45b27ed79, type: 3}
   - {fileID: 4394807073652453445, guid: 93bf85869abeb8942be778b9684c493b, type: 3}
   learnLevel: 0200000004000000070000000a0000000d000000
-  hpMultiplier: 1.2
-  mpMultiplier: 1.2
   totalMP: 100
   mp: 0
   level: 1
@@ -675,6 +673,7 @@ MonoBehaviour:
   weapon:
   - {fileID: 7732845678848063090, guid: e4f31d84b3d68da4e911a3583b69b16d, type: 3}
   - {fileID: 7732845678848063090, guid: c558ded89dbc32046b402c69af570d52, type: 3}
+  - {fileID: 7732845678848063090, guid: 250a177efee7128408bddb48c37fbd62, type: 3}
   blockAttack: {fileID: 0}
   levelUI: {fileID: 29637767}
 --- !u!114 &6532899708885022207
