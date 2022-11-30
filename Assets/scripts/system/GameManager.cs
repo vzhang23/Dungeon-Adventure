@@ -94,8 +94,7 @@ public class GameManager : MonoBehaviour
     public void ReturnToMenu()
     {
 
-        EditorUtility.SetDirty(saveObject);
-        AssetDatabase.SaveAssets();
+        saveObject.GetComponent<GameSave>().save();
         Time.timeScale = 1;
         GameObject keep=GameObject.FindGameObjectWithTag("keepObjectOnLoad");
         keep.SetActive(true);
@@ -106,9 +105,8 @@ public class GameManager : MonoBehaviour
 
     public void InfinityLevel()
     {
+        saveObject.GetComponent<GameSave>().save();
 
-        EditorUtility.SetDirty(saveObject);
-        AssetDatabase.SaveAssets();
         KeepObjectOnLoad keep = GameObject.FindGameObjectWithTag("keepObjectOnLoad").GetComponent<KeepObjectOnLoad>();
         keep.activeObject();
         stageNumber = -1;

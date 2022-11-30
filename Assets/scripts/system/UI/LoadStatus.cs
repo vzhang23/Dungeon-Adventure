@@ -18,10 +18,10 @@ public class LoadStatus : MonoBehaviour
 
         string newText = "";
         PlayerAttribute player = GameObject.FindGameObjectWithTag("player").GetComponent<PlayerAttribute>();
-        newText += "Max HP: " + player.hp+"\n";
-        newText += "Current HP: " + player.totalHealth + "\n";
-        newText += "Max MP: " + player.mp + "\n";
-        newText += "Current MP: " + player.totalMP + "\n";
+        newText += "Max HP: " + player.totalHealth + "\n";
+        newText += "Current HP: " + player.hp + "\n";
+        newText += "Max MP: " + player.totalMP + "\n";
+        newText += "Current MP: " + player.mp + "\n";
         newText += "Attack: " + player.attack + "\n";
         newText += "Defense: " + player.defense + "\n";
         newText += "Speed: " + player.moveSpeed + "\n";

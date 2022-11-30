@@ -27,14 +27,8 @@ public class PlayerEXPBar : MonoBehaviour
 
         PlayerAttribute attribute = player.GetComponent<PlayerAttribute>();
         float scale;
-        if (attribute.level == 20)
-        {
-            scale = 0;
-        }
-        else
-        {
-            scale = (attribute.exp- attribute.getExpCurve()[attribute.level-1])*1.0f /( attribute.getExpCurve()[attribute.level] - attribute.getExpCurve()[attribute.level - 1]);
-        }
+
+        scale = (attribute.exp- attribute.getExpCurve(attribute.level - 1))*1.0f /( attribute.getExpCurve(attribute.level) - attribute.getExpCurve(attribute.level - 1));
         localScale.x = scale*max_scale;
         transform.localScale = localScale;
     }
