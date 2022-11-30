@@ -22,6 +22,9 @@ public class EnemyWeapon : MonoBehaviour
     public bool targetPlayer;
     private GameObject player;
     private Rigidbody2D rb;
+
+    public float moveUp;
+    public float rotate;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +45,7 @@ public class EnemyWeapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float timePassed = Time.time - startTime;
         if (currentDealDamageTimes == dealDamageTimes)
         {
             Destroy(gameObject);
@@ -74,7 +78,6 @@ public class EnemyWeapon : MonoBehaviour
         }
         try
         {
-            float timePassed = Time.time - startTime;
             if (follow)
             {
                 Vector2 currentOffset = new Vector2(attactOffset.x + timePassed * speed.x, attactOffset.y + timePassed * speed.y);
@@ -90,6 +93,10 @@ public class EnemyWeapon : MonoBehaviour
         {
 
         }
+
+        gameObject.transform.position = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + moveUp * (timePassed / duration));
+        gameObject.transform.rotation = Quaternion.Euler(gameObject.transform.rotation.x, gameObject.transform.rotation.y, gameObject.transform.rotation.z - rotate * (timePassed / duration) * direction);
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
