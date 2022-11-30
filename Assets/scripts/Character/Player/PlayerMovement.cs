@@ -151,7 +151,7 @@ public class PlayerMovement : MonoBehaviour
                     
                 }
                 wearArmor(newArmorPart.GetComponent<PlayerArmor>());
-                Destroy(newArmorPart);
+                Destroy(newArmorPart.transform.parent.gameObject);
             }
             else
             {
